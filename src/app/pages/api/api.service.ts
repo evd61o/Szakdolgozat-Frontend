@@ -10,7 +10,7 @@ export interface Refrigerator {
   Meret?: number;
   Energiahatekonysagi_osztaly?: string;
   Fogyasztasev?: number;
-  Fogyasztasnap?: number;
+  Fogyasztasnfap?: number;
 }
 
 @Injectable({
