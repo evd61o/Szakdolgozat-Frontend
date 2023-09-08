@@ -1,0 +1,52 @@
+<!--<mat-sidenav-container>-->
+<!--  <mat-sidenav mode="side" opened>-->
+<!--    <button mat-button class="menu-button" routerLink="/">-->
+<!--      <mat-icon>home</mat-icon>-->
+<!--      <span>Home</span>-->
+<!--    </button>-->
+<!--    <button mat-button class="menu-button" routerLink="/kalkulator">-->
+<!--      <mat-icon>offline_bolt</mat-icon>-->
+<!--      <span>Kalkulátor</span>-->
+<!--    </button>-->
+<!--  </mat-sidenav>-->
+<!--  <mat-sidenav-content>-->
+<!--    <div class="content">-->
+<!--      <p>-->
+<!--        Sütők:-->
+<!--        <input>-->
+<!--      </p>-->
+<!--      <p>-->
+<!--        Főzőlapok:-->
+<!--        <input>-->
+<!--      </p>-->
+<!--      <p>-->
+<!--        Páraelszívók-->
+<!--        <input>-->
+<!--      </p>-->
+<!--      <p>-->
+<!--        Mikrohullámú sütők:-->
+<!--        {{hutokKiirasa ? (hutokKiirasa[0].Modell) : ""}}-->
+<!--        <input>-->
+<!--      </p>-->
+<!--      <p>-->
+<!--        Mosogatógépek:-->
+<!--        <input>-->
+<!--      </p>-->
+<!--      <p>-->
+<!--        Hűtők:-->
+<!--        <input>-->
+<!--      </p>-->
+<!--      <p>-->
+<!--        Fagyasztók:-->
+<!--        <input>-->
+<!--      </p>-->
+<!--    </div>-->
+<!--  </mat-sidenav-content>-->
+<!--</mat-sidenav-container>-->
+<ng-container *ngIf="hutokKiirasa">
+  <div *ngFor="let huto of hutokKiirasa">
+    Modell: {{huto.Modell}} <br /><br />
+  </div>
+</ng-container>
+
+<!--{{(hutokKiirasa !== undefined || hutokKiirasa !== false) ? hutokKiirasa[0] : ""}}-->

@@ -1,0 +1,25 @@
+mat-sidenav{
+  margin: 16px;
+  width: 200px;
+  border-right: none;
+  background: burlywood;
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+mat-sidenav-container{
+  height: calc(100vh - 65px);
+}
+
+.content{
+  height: calc(100vh - 98px);
+  margin: 16px;
+  margin-left: 32px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.menu-button{
+  font-family: Elephant;
+}
