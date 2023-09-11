@@ -1,52 +1,104 @@
-<!--<mat-sidenav-container>-->
-<!--  <mat-sidenav mode="side" opened>-->
-<!--    <button mat-button class="menu-button" routerLink="/">-->
-<!--      <mat-icon>home</mat-icon>-->
-<!--      <span>Home</span>-->
-<!--    </button>-->
-<!--    <button mat-button class="menu-button" routerLink="/kalkulator">-->
-<!--      <mat-icon>offline_bolt</mat-icon>-->
-<!--      <span>Kalkulátor</span>-->
-<!--    </button>-->
-<!--  </mat-sidenav>-->
-<!--  <mat-sidenav-content>-->
-<!--    <div class="content">-->
-<!--      <p>-->
-<!--        Sütők:-->
-<!--        <input>-->
-<!--      </p>-->
-<!--      <p>-->
-<!--        Főzőlapok:-->
-<!--        <input>-->
-<!--      </p>-->
-<!--      <p>-->
-<!--        Páraelszívók-->
-<!--        <input>-->
-<!--      </p>-->
-<!--      <p>-->
-<!--        Mikrohullámú sütők:-->
-<!--        {{hutokKiirasa ? (hutokKiirasa[0].Modell) : ""}}-->
-<!--        <input>-->
-<!--      </p>-->
-<!--      <p>-->
-<!--        Mosogatógépek:-->
-<!--        <input>-->
-<!--      </p>-->
-<!--      <p>-->
-<!--        Hűtők:-->
-<!--        <input>-->
-<!--      </p>-->
-<!--      <p>-->
-<!--        Fagyasztók:-->
-<!--        <input>-->
-<!--      </p>-->
-<!--    </div>-->
-<!--  </mat-sidenav-content>-->
-<!--</mat-sidenav-container>-->
-<ng-container *ngIf="hutokKiirasa">
-  <div *ngFor="let huto of hutokKiirasa">
-    Modell: {{huto.Modell}} <br /><br />
-  </div>
-</ng-container>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <button mat-button class="menu-button" routerLink="/">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/kalkulator">
+      <mat-icon>offline_bolt</mat-icon>
+      <span>Kalkulátor</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <form
+        [formGroup]="form"
+        class="searchBar"
+        (ngSubmit)="onSearchSubmit()"
+      >
+        <input
+          type="text"
+          placeholder="hutok..."
+          formControlName="searchValueRefrigerator"
+          class="searchBarInput"
+        />
+      </form>
+      <form
+        [formGroup]="form"
+        class="searchBar"
+        (ngSubmit)="onSearchSubmit()"
+      >
+        <input
+          type="text"
+          placeholder="fagyasztok..."
+          formControlName="searchValueFreezer"
+          class="searchBarInput"
+        />
+      </form>
+      <form
+        [formGroup]="form"
+        class="searchBar"
+        (ngSubmit)="onSearchSubmit()"
+      >
+        <input
+          type="text"
+          placeholder="fozolapok..."
+          formControlName="searchValueHot_plate"
+          class="searchBarInput"
+        />
+      </form>
+      <form
+        [formGroup]="form"
+        class="searchBar"
+        (ngSubmit)="onSearchSubmit()"
+      >
+        <input
+          type="text"
+          placeholder="mikrohullamu sutok..."
+          formControlName="searchValueMicrowave"
+          class="searchBarInput"
+        />
+      </form>
+      <form
+        [formGroup]="form"
+        class="searchBar"
+        (ngSubmit)="onSearchSubmit()"
+      >
+        <input
+          type="text"
+          placeholder="mosogatógépek..."
+          formControlName="searchValueDishwasher"
+          class="searchBarInput"
+        />
+      </form>
+      <form
+        [formGroup]="form"
+        class="searchBar"
+        (ngSubmit)="onSearchSubmit()"
+      >
+        <input
+          type="text"
+          placeholder="páraelszívók..."
+          formControlName="searchValueDehumidifier"
+          class="searchBarInput"
+        />
+      </form>
+      <form
+        [formGroup]="form"
+        class="searchBar"
+        (ngSubmit)="onSearchSubmit()"
+      >
+        <input
+          type="text"
+          placeholder="sütők..."
+          formControlName="searchValueOven"
+          class="searchBarInput"
+        />
+      </form>
+      <div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 <!--{{(hutokKiirasa !== undefined || hutokKiirasa !== false) ? hutokKiirasa[0] : ""}}-->

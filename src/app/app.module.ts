@@ -14,6 +14,10 @@ import {MatIconModule} from "@angular/material/icon";
 import { KalkulatorComponent } from './pages/kalkulator/kalkulator.component';
 import {ApiService} from "./pages/api/api.service";
 import {HttpClientModule} from "@angular/common/http";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -23,16 +27,20 @@ import {HttpClientModule} from "@angular/common/http";
     FooterComponent,
     KalkulatorComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatIconModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatButtonModule,
+        MatIconModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatSelectModule
+    ],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })

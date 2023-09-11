@@ -1,17 +1,7 @@
 import {Inject, Injectable, InjectionToken, Optional} from "@angular/core";
 import {HttpClient, HttpEvent, HttpResponse} from "@angular/common/http";
 import { Observable } from "rxjs";
-
-
-export interface Refrigerator {
-  Marka?: string;
-  Modell?: string;
-  Tipus?: string;
-  Meret?: number;
-  Energiahatekonysagi_osztaly?: string;
-  Fogyasztasev?: number;
-  Fogyasztasnfap?: number;
-}
+import {Dehumidifier, Dishwasher, Freezer, Hot_plate, Microwave, Oven, Refrigerator} from "../interface/interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +12,30 @@ export class ApiService {
   constructor(protected httpClient: HttpClient) {
   }
 
-  public getRefrigeratorsFromApi$(): Observable<Array<Refrigerator>>;
-  public getRefrigeratorsFromApi$(): Observable<HttpResponse<Array<Refrigerator>>>;
-  public getRefrigeratorsFromApi$(): Observable<HttpEvent<Array<Refrigerator>>>;
-  public getRefrigeratorsFromApi$(): Observable<any> {
+  /*public getRefrigeratorsFromApi$(): Observable<Array<Refrigerator>>;
+  /*public getRefrigeratorsFromApi$(): Observable<HttpResponse<Array<Refrigerator>>>;*/
+  /*public getRefrigeratorsFromApi$(): Observable<HttpEvent<Array<Refrigerator>>>;*/
 
-    /*this.httpClient.request<Array<Refrigerator>>('get',`${this.basePath}/api/v1/flight-cancellation/${encodeURIComponent(String(id))}`)*/
-    return this.httpClient.request<Array<Refrigerator>>('get',`${this.basePath}/hutok`)
+  public getRefrigeratorsFromApi$(searchValueRefrigerator: string): Observable<Refrigerator> {
+    return this.httpClient.get<Refrigerator>(`${this.basePath}/hutok/${searchValueRefrigerator}`);
+  }
+  public getFreezersFromApi$(searchValueFreezer: string): Observable<Freezer> {
+    return this.httpClient.get<Freezer>(`${this.basePath}/fagyasztok/${searchValueFreezer}`);
+  }
+  public getHot_PlatesFromApi$(searchValueHot_plate: string): Observable<Hot_plate> {
+    return this.httpClient.get<Hot_plate>(`${this.basePath}/fozolapok/${searchValueHot_plate}`);
+  }
+  public getMicrowavesFromApi$(searchValueMicrowave: string): Observable<Microwave> {
+    return this.httpClient.get<Microwave>(`${this.basePath}/mikrohullamu_sutok/${searchValueMicrowave}`);
+  }
+  public getDishwashersFromApi$(searchValueDishwasher: string): Observable<Dishwasher> {
+    return this.httpClient.get<Dishwasher>(`${this.basePath}/mosogatogepek/${searchValueDishwasher}`);
+  }
+  public getDehumidifiersFromApi$(searchValueDehumidifier: string): Observable<Dehumidifier> {
+    return this.httpClient.get<Dehumidifier>(`${this.basePath}/paraelszivok/${searchValueDehumidifier}`);
+  }
+  public getOvensFromApi$(searchValueOven: string): Observable<Oven> {
+    return this.httpClient.get<Oven>(`${this.basePath}/sutok/${searchValueOven}`);
   }
 }
 
