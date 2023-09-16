@@ -15,27 +15,26 @@ export class ApiService {
   /*public getRefrigeratorsFromApi$(): Observable<Array<Refrigerator>>;
   /*public getRefrigeratorsFromApi$(): Observable<HttpResponse<Array<Refrigerator>>>;*/
   /*public getRefrigeratorsFromApi$(): Observable<HttpEvent<Array<Refrigerator>>>;*/
-
-  public getRefrigeratorsFromApi$(searchValueRefrigerator: string): Observable<Refrigerator> {
-    return this.httpClient.get<Refrigerator>(`${this.basePath}/hutok/${searchValueRefrigerator}`);
+  public getRefrigeratorsFromApi$(): Observable<Refrigerator[]> {
+    return this.httpClient.get<Refrigerator[]>(`${this.basePath}/hutok`);
   }
-  public getFreezersFromApi$(searchValueFreezer: string): Observable<Freezer> {
-    return this.httpClient.get<Freezer>(`${this.basePath}/fagyasztok/${searchValueFreezer}`);
+  public getFreezersFromApi$(): Observable<Freezer[]> {
+    return this.httpClient.get<Freezer[]>(`${this.basePath}/fagyasztok`);
   }
-  public getHot_PlatesFromApi$(searchValueHot_plate: string): Observable<Hot_plate> {
-    return this.httpClient.get<Hot_plate>(`${this.basePath}/fozolapok/${searchValueHot_plate}`);
+  public getHot_PlatesFromApi$(): Observable<Hot_plate[]> {
+    return this.httpClient.get<Hot_plate[]>(`${this.basePath}/fozolapok`);
   }
-  public getMicrowavesFromApi$(searchValueMicrowave: string): Observable<Microwave> {
-    return this.httpClient.get<Microwave>(`${this.basePath}/mikrohullamu_sutok/${searchValueMicrowave}`);
+  public getMicrowavesFromApi$(): Observable<Microwave[]> {
+    return this.httpClient.get<Microwave[]>(`${this.basePath}/mikrohullamu_sutok`);
   }
-  public getDishwashersFromApi$(searchValueDishwasher: string): Observable<Dishwasher> {
-    return this.httpClient.get<Dishwasher>(`${this.basePath}/mosogatogepek/${searchValueDishwasher}`);
+  public getDishwashersFromApi$(): Observable<Dishwasher[]> {
+    return this.httpClient.get<Dishwasher[]>(`${this.basePath}/mosogatogepek`);
   }
-  public getDehumidifiersFromApi$(searchValueDehumidifier: string): Observable<Dehumidifier> {
-    return this.httpClient.get<Dehumidifier>(`${this.basePath}/paraelszivok/${searchValueDehumidifier}`);
+  public getDehumidifiersFromApi$(): Observable<Dehumidifier[]> {
+    return this.httpClient.get<Dehumidifier[]>(`${this.basePath}/paraelszivok`);
   }
-  public getOvensFromApi$(searchValueOven: string): Observable<Oven> {
-    return this.httpClient.get<Oven>(`${this.basePath}/sutok/${searchValueOven}`);
+  public getOvensFromApi$(): Observable<Oven[]> {
+    return this.httpClient.get<Oven[]>(`${this.basePath}/sutok`);
   }
 }
 

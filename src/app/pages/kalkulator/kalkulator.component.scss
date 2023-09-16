@@ -10,15 +10,56 @@ mat-sidenav{
 }
 mat-sidenav-container{
   height: calc(100vh - 65px);
+  background-color: #7B3A18;
 }
 
 .content{
   height: calc(100vh - 98px);
   margin: 16px;
   margin-left: 32px;
-  justify-content: space-around;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  button{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    font-family: Impact;
+    background-color: burlywood;
+    border-radius: 15px;
+
+  }
+  .searchBar{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .hoursInput{
+    font-size: 20px;
+    font-family: Impact;
+    color: burlywood;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
+
 .menu-button{
-  font-family: Elephant;
+  font-family: Impact;
 }
+
+
+.searchBarHoursInput{
+  background-color: burlywood;
+  font-family: Impact;
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+  font-size: 18px;
+}
+
+
+

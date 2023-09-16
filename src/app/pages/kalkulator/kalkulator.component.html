@@ -1,104 +1,192 @@
-<mat-sidenav-container>
-  <mat-sidenav mode="side" opened>
-    <button mat-button class="menu-button" routerLink="/">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button>
-    <button mat-button class="menu-button" routerLink="/kalkulator">
-      <mat-icon>offline_bolt</mat-icon>
-      <span>Kalkulátor</span>
-    </button>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="content">
-      <form
-        [formGroup]="form"
-        class="searchBar"
-        (ngSubmit)="onSearchSubmit()"
-      >
-        <input
-          type="text"
-          placeholder="hutok..."
-          formControlName="searchValueRefrigerator"
-          class="searchBarInput"
-        />
-      </form>
-      <form
-        [formGroup]="form"
-        class="searchBar"
-        (ngSubmit)="onSearchSubmit()"
-      >
-        <input
-          type="text"
-          placeholder="fagyasztok..."
-          formControlName="searchValueFreezer"
-          class="searchBarInput"
-        />
-      </form>
-      <form
-        [formGroup]="form"
-        class="searchBar"
-        (ngSubmit)="onSearchSubmit()"
-      >
-        <input
-          type="text"
-          placeholder="fozolapok..."
-          formControlName="searchValueHot_plate"
-          class="searchBarInput"
-        />
-      </form>
-      <form
-        [formGroup]="form"
-        class="searchBar"
-        (ngSubmit)="onSearchSubmit()"
-      >
-        <input
-          type="text"
-          placeholder="mikrohullamu sutok..."
-          formControlName="searchValueMicrowave"
-          class="searchBarInput"
-        />
-      </form>
-      <form
-        [formGroup]="form"
-        class="searchBar"
-        (ngSubmit)="onSearchSubmit()"
-      >
-        <input
-          type="text"
-          placeholder="mosogatógépek..."
-          formControlName="searchValueDishwasher"
-          class="searchBarInput"
-        />
-      </form>
-      <form
-        [formGroup]="form"
-        class="searchBar"
-        (ngSubmit)="onSearchSubmit()"
-      >
-        <input
-          type="text"
-          placeholder="páraelszívók..."
-          formControlName="searchValueDehumidifier"
-          class="searchBarInput"
-        />
-      </form>
-      <form
-        [formGroup]="form"
-        class="searchBar"
-        (ngSubmit)="onSearchSubmit()"
-      >
-        <input
-          type="text"
-          placeholder="sütők..."
-          formControlName="searchValueOven"
-          class="searchBarInput"
-        />
-      </form>
-      <div>
-      </div>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<form
+  [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+      <button mat-button class="menu-button" routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/kalkulator">
+        <mat-icon>offline_bolt</mat-icon>
+        <span>Kalkulátor</span>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content">
+        <div class="searchBar">
+          <mat-form-field>
+            <mat-label>Valassza ki a hűtőjét:</mat-label>
+            <input type="text"
+                   placeholder="Válassz"
+                   aria-label="String"
+                   matInput
+                   formControlName="searchValueRefrigerator"
+                   [matAutocomplete]="auto1">
+            <mat-autocomplete #auto1="matAutocomplete">
+              <mat-option *ngFor="let refrigerator of filteredOptionsRefrigerators | async" [value]="refrigerator.Modell">
+                Modell: {{refrigerator.Modell}}
+                Márka: {{refrigerator.Marka}}
+                Típus: {{refrigerator.Tipus}}
+                Méret (liter): {{refrigerator.Meret}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
 
-<!--{{(hutokKiirasa !== undefined || hutokKiirasa !== false) ? hutokKiirasa[0] : ""}}-->
+          <mat-form-field>
+            <mat-label>Valassza ki a fagyasztóját:</mat-label>
+            <input type="text"
+                   placeholder="Válassz"
+                   aria-label="String"
+                   matInput
+                   formControlName="searchValueFreezer"
+                   [matAutocomplete]="auto2">
+          <mat-autocomplete #auto2="matAutocomplete">
+            <mat-option *ngFor="let freezer of filteredOptionsFreezers | async" [value]="freezer.Modell">
+              Modell: {{freezer.Modell}}
+              Márka: {{freezer.Marka}}
+              Energia o: {{freezer.Energiahatekonysagi_osztaly}}
+              Méret (liter): {{freezer.Meret}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Valassza ki a főzőlapját:</mat-label>
+          <input type="text"
+                 placeholder="Válassz"
+                 aria-label="String"
+                 matInput
+                 formControlName="searchValueHot_plate"
+                 [matAutocomplete]="auto3">
+          <mat-autocomplete #auto3="matAutocomplete">
+            <mat-option *ngFor="let hot_plate of filteredOptionsHot_plates | async" [value]="hot_plate.Modell">
+              Modell: {{hot_plate.Modell}}
+              Márka: {{hot_plate.Marka}}
+              Típus: {{hot_plate.Tipus}}
+              Teljesítmény (W): {{hot_plate.Teljesitmeny}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Valassza ki a mikrohullámú sütőjét:</mat-label>
+          <input type="text"
+                 placeholder="Válassz"
+                 aria-label="String"
+                 matInput
+                 formControlName="searchValueMicrowave"
+                 [matAutocomplete]="auto4">
+          <mat-autocomplete #auto4="matAutocomplete">
+            <mat-option *ngFor="let microwave of filteredOptionsMicrowaves | async" [value]="microwave.Modell">
+              Modell: {{microwave.Modell}}
+              Márka: {{microwave.Marka}}
+              Típus: {{microwave.Tipus}}
+              Teljesítmény (W): {{microwave.Teljesitmeny}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Valassza ki a mosogatógépét:</mat-label>
+          <input type="text"
+                 placeholder="Válassz"
+                 aria-label="String"
+                 matInput
+                 formControlName="searchValueDishwasher"
+                 [matAutocomplete]="auto5">
+          <mat-autocomplete #auto5="matAutocomplete">
+            <mat-option *ngFor="let dishwasher of filteredOptionsDishwashers | async" [value]="dishwasher.Modell">
+              Modell: {{dishwasher.Modell}}
+              Márka: {{dishwasher.Marka}}
+              Típus: {{dishwasher.Tipus}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Valassza ki a páraelszívóját</mat-label>
+          <input type="text"
+                 placeholder="Válassz"
+                 aria-label="String"
+                 matInput
+                 formControlName="searchValueDehumidifier"
+                 [matAutocomplete]="auto6">
+          <mat-autocomplete #auto6="matAutocomplete">
+            <mat-option *ngFor="let dehumidifier of filteredOptionsDehumidifiers | async" [value]="dehumidifier.Tipus">
+              Modell: {{dehumidifier.Tipus}}
+              Márka: {{dehumidifier.Marka}}
+              Energia o: {{dehumidifier.Energiahatekonysagi_osztaly}}
+              Teljesítmény (W): {{dehumidifier.Teljesitmeny}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Valassza ki a sütőjét</mat-label>
+          <input type="text"
+                 placeholder="Válassz"
+                 aria-label="String"
+                 matInput
+                 formControlName="searchValueOven"
+                 [matAutocomplete]="auto7">
+          <mat-autocomplete #auto7="matAutocomplete">
+            <mat-option *ngFor="let oven of filteredOptionsOvens | async" [value]="oven.Tipus">
+              Modell: {{oven.Tipus}}
+              Márka: {{oven.Marka}}
+              Energia o: {{oven.Energiahatekonysagi_osztaly}}
+              Teljesítmény (W): {{oven.Teljesitmeny}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        </div>
+        <div class="hoursInput">
+        A főzőlapját hány órát használja egy nap?
+        <input
+          type="number"
+          min="0"
+          max="24"
+          formControlName="searchBarHot_plateHoursInput"
+          class="searchBarHoursInput">
+        A mikrohullámú sütőjét hány órát használja egy nap?
+        <input
+          type="number"
+          min="0"
+          max="40"
+          formControlName="searchBarMicrowaveHoursInput"
+          class="searchBarHoursInput">
+          A mosogatógépén hány eco programot használ egy nap?
+          <input
+            type="number"
+            min="0"
+            max="24"
+            formControlName="searchBarDishwasherEcoProgramCountInput"
+            class="searchBarHoursInput">
+          A páraelszívóját hány órát használja egy nap?
+          <input
+            type="number"
+            min="0"
+            max="24"
+            formControlName="searchBarDehumidifierHoursInput"
+            class="searchBarHoursInput">
+          A sütőjét hány órát használja egy nap?
+          <input
+            type="number"
+            min="0"
+            max="24"
+            formControlName="searchBarOvenHoursInput"
+            class="searchBarHoursInput">
+        <button type="submit">Számolás</button>
+        <p>
+          Napi áramfogyasztás (kWh): {{power_consumption_daily}}
+        </p>
+        <p>
+          Havi áramfogyasztás (kWh): {{power_consumption_monthly}}
+        </p>
+        <p>
+          Évi áramfogyasztás (kWh): {{power_consumption_yearly}}
+        </p>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</form>

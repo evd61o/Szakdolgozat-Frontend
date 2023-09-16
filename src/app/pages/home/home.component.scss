@@ -3,13 +3,13 @@ mat-sidenav{
   width: 200px;
   border-right: none;
   background: burlywood;
-  color: white;
   border-radius: 10px;
   padding: 16px;
   text-align: center;
 }
 mat-sidenav-container{
   height: calc(100vh - 65px);
+  background-color: #7B3A18;
 }
 
 .content{
@@ -21,5 +21,5 @@ mat-sidenav-container{
   align-items: center;
 }
 .menu-button{
-  font-family: Elephant;
+  font-family: Impact;
 }
