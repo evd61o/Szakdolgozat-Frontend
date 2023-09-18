@@ -29,13 +29,33 @@ mat-sidenav-container{
     font-family: Impact;
     background-color: burlywood;
     border-radius: 15px;
-
   }
+  mat-label{
+    font-size: 20px;
+    font-family: Impact;
+  }
+
   .searchBar{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
+  .searchBar2{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+
+  .searchBarHoursInput{
+    background-color: burlywood;
+    font-family: Impact;
+    width: 50px;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 18px;
+  }
+
   .hoursInput{
     font-size: 20px;
     font-family: Impact;
@@ -45,6 +65,10 @@ mat-sidenav-container{
     flex-wrap: wrap;
     align-items: center;
   }
+
+  .asd{
+    margin-top: 65px;
+  }
 }
 
 .menu-button{
@@ -52,14 +76,9 @@ mat-sidenav-container{
 }
 
 
-.searchBarHoursInput{
-  background-color: burlywood;
-  font-family: Impact;
-  width: 50px;
-  height: 30px;
-  border-radius: 15px;
-  font-size: 18px;
-}
+
+
+
 
 
 

@@ -37,14 +37,14 @@ export interface Dishwasher {
 }
 export interface Dehumidifier {
   Marka?: string;
-  Tipus?: string;
+  Modell?: string;
   Energiahatekonysagi_osztaly?: string;
   Teljesitmeny?: number;
   Fogyasztas?: number;
 }
 export interface Oven {
   Marka?: string;
-  Tipus?: string;
+  Modell?: string;
   Energiahatekonysagi_osztaly?: string;
   Teljesitmeny?: number;
   Fogyasztas?: number;

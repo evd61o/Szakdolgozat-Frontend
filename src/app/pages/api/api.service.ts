@@ -21,6 +21,16 @@ export class ApiService {
   public getFreezersFromApi$(): Observable<Freezer[]> {
     return this.httpClient.get<Freezer[]>(`${this.basePath}/fagyasztok`);
   }
+
+
+
+  public getSearchedFreezersFromApi$(selected_freezer_y_c: number): Observable<Freezer[]> {
+    return this.httpClient.get<Freezer[]>(`${this.basePath}/fagyasztok/${selected_freezer_y_c}`);
+  }
+
+
+
+
   public getHot_PlatesFromApi$(): Observable<Hot_plate[]> {
     return this.httpClient.get<Hot_plate[]>(`${this.basePath}/fozolapok`);
   }
