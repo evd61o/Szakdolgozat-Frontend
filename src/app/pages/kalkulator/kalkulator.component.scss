@@ -3,7 +3,6 @@ mat-sidenav{
   width: 200px;
   border-right: none;
   background: burlywood;
-  color: white;
   border-radius: 10px;
   padding: 16px;
   text-align: center;
@@ -27,6 +26,7 @@ mat-sidenav-container{
     width: 150px;
     font-size: 20px;
     font-family: Impact;
+    color: black;
     background-color: burlywood;
     border-radius: 15px;
   }
@@ -65,18 +65,12 @@ mat-sidenav-container{
     flex-wrap: wrap;
     align-items: center;
   }
-
-  .asd{
-    margin-top: 65px;
-  }
 }
 
 .menu-button{
   font-family: Impact;
+  margin-bottom: 10px;
 }
-
-
-
 
 
 

@@ -49,3 +49,21 @@ export interface Oven {
   Teljesitmeny?: number;
   Fogyasztas?: number;
 }
+export interface Washing_machine {
+  Marka?: string;
+  Modell?: string;
+  Tipus?: string;
+  Energiahatekonysagi_osztaly?: string;
+  Max_toltetsuly?: number;
+  Max_cent_ford?: number;
+  Fogyasztas_100_eco_40_60_program?: number;
+  Fogyasztas_eco_40_60_program?: number;
+}
+export interface Dryer {
+  Marka?: string;
+  Modell?: string;
+  Energiahatekonysagi_osztaly?: string;
+  Max_toltetsuly?: number;
+  Fogyasztasev?: number;
+  Fogyasztasnap?: number;
+}
