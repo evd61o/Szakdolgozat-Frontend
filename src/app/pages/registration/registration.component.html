@@ -1,0 +1,42 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+      <a mat-button class="menu-button" routerLink="">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+      <a mat-button class="menu-button" routerLink="/kalkulator">
+        <mat-icon>offline_bolt</mat-icon>
+        <span>Kalkulátor</span>
+      </a>
+      <a mat-button class="menu-button" routerLink="/informaciok">
+        <mat-icon>warning</mat-icon>
+        <span>Fontos tudnivalók</span>
+      </a>
+      <a mat-button class="menu-button" routerLink="/bejelentkezes">
+        <mat-icon>person</mat-icon>
+        <span>Bejelentkezés</span>
+      </a>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content">
+        <h1>Regisztráció</h1>
+        <mat-form-field>
+          Felhasználónév:
+          <input matInput type="text" formControlName="username"  name="username">
+        </mat-form-field>
+        <mat-form-field>
+          E-mail cím:
+          <input matInput type="email" formControlName="email" name="email" placeholder="Pl: pat@pelda.com">
+        </mat-form-field>
+        <mat-form-field>
+          Jelszó:
+          <input matInput type="password" formControlName="password" name="password">
+       </mat-form-field>
+        <button mat-raised-button class="registrationbttn" type="submit" >{{apiRequestInProgress ? "csicska töltés" : "Regisztráció"}}</button>
+        <span *ngIf="show" >Sikertelen regisztráció</span>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</form>
+

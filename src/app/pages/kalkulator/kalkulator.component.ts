@@ -10,14 +10,15 @@ import {
   Refrigerator,
   Washing_machine
 } from "../interface/interfaces";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {first, map, Observable, startWith, Subject, switchMap, takeUntil} from "rxjs";
 
 
 @Component({
   selector: 'app-kalkulator',
   templateUrl: './kalkulator.component.html',
-  styleUrls: ['./kalkulator.component.scss']
+  styleUrls: ['./kalkulator.component.scss'],
+
 })
 export class KalkulatorComponent implements OnInit, OnDestroy {
   showMe:boolean = false;
@@ -66,15 +67,15 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
 
 
   public form = this.fb.group({
-    searchValueRefrigerator: '',
-    searchValueFreezer: '',
-    searchValueHot_plate: '',
-    searchValueMicrowave: '',
-    searchValueDishwasher: '',
-    searchValueDehumidifier: '',
-    searchValueOven: '',
-    searchValueWashing_machine: '',
-    searchValueDryer: '',
+    searchValueRefrigerator: ['', Validators.required],
+    searchValueFreezer: ['', Validators.required],
+    searchValueHot_plate: ['', Validators.required],
+    searchValueMicrowave: ['', Validators.required],
+    searchValueDishwasher: ['', Validators.required],
+    searchValueDehumidifier: ['', Validators.required],
+    searchValueOven: ['', Validators.required],
+    searchValueWashing_machine: ['', Validators.required],
+    searchValueDryer: ['', Validators.required],
     searchBarHot_plateMinutesInput: 0,
     searchBarMicrowaveMinutesInput: 0,
     searchBarDishwasherEcoProgramCountInput: 0,
@@ -273,15 +274,15 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     let washing_machine_values = this.washing_machines.find(value => value.Modell == form_value.searchValueWashing_machine);
     let dryer_values = this.dryers.find(value => value.Modell == form_value.searchValueDryer);
 
-    // console.log(refrigerator_values?.Fogyasztasnap);
-    // console.log(freezer_values?.Fogyasztasnap);
-    // console.log(hot_plate_values?.Fogyasztas);
-    // console.log(microwave_values?.Fogyasztas);
-    // console.log(dishwasher_values?.Fogyasztas_kWh_eco_program);
-    // console.log(dehumidifier_values?.Fogyasztas);
-    // console.log(oven_values?.Fogyasztas);
-    // console.log(washing_machine_values?.Fogyasztas_eco_40_60_program);
-    // console.log(dryer_values?.Fogyasztasnap);
+    console.log(refrigerator_values?.Fogyasztasnap);
+    console.log(freezer_values?.Fogyasztasnap);
+    console.log(hot_plate_values?.Fogyasztas);
+    console.log(microwave_values?.Fogyasztas);
+    console.log(dishwasher_values?.Fogyasztas_kWh_eco_program);
+    console.log(dehumidifier_values?.Fogyasztas);
+    console.log(oven_values?.Fogyasztas);
+    console.log(washing_machine_values?.Fogyasztas_eco_40_60_program);
+    console.log(dryer_values?.Fogyasztasnap);
 
     let refrigerator_daily_consumption = refrigerator_values?.Fogyasztasnap;
     let freezer_daily_consumption = freezer_values?.Fogyasztasnap;
@@ -303,12 +304,12 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     let searchBarOvenMinutesInput = form_value.searchBarOvenMinutesInput!/60;
     let searchBarWashingMachineEcoProgram40_60CountInput = form_value.searchBarWashingMachineEcoProgram40_60CountInput;
 
-    // console.log(form_value.searchBarHot_plateMinutesInput);
-    // console.log(form_value.searchBarMicrowaveMinutesInput);
-    // console.log(form_value.searchBarDishwasherEcoProgramCountInput);
-    // console.log(form_value.searchBarDehumidifierMinutesInput);
-    // console.log(form_value.searchBarOvenMinutesInput);
-    // console.log(form_value.searchBarWashingMachineEcoProgram40_60CountInput);
+    console.log(form_value.searchBarHot_plateMinutesInput);
+    console.log(form_value.searchBarMicrowaveMinutesInput);
+    console.log(form_value.searchBarDishwasherEcoProgramCountInput);
+    console.log(form_value.searchBarDehumidifierMinutesInput);
+    console.log(form_value.searchBarOvenMinutesInput);
+    console.log(form_value.searchBarWashingMachineEcoProgram40_60CountInput);
 
     let daily_power_consumption = refrigerator_daily_consumption! + freezer_daily_consumption! + dryer_daily_consumption! +
       (searchBarHot_plateMinutesInput! * hot_plate_consumption!) + (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
@@ -329,11 +330,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     this.power_consumption_monthly = monthly_power_consumption;
     this.power_consumption_yearly = yearly_power_consumption;
 
-    // console.log(refrigerator_daily_consumption! + freezer_daily_consumption! +
-    //   (searchBarHot_plateHoursInput! * hot_plate_hourly_consumption!) + (searchBarMicrowaveHoursInput! * microwave_hourly_consumption!) +
-    //   (searchBarDishwasherEcoProgramCountInput! * dishwasher_eco_program_consumption!) +
-    //   (searchBarDehumidifierHoursInput! * dehumidifier_hourly_consumption!) + (searchBarOvenHoursInput! * oven_hourly_consumption!));
-
+    console.log(daily_power_consumption)
 
     this.selected_refrigerator_y_c = refrigerator_yearly_consumption;
     this.selected_freezer_y_c = freezer_yearly_consumption;

@@ -16,11 +16,14 @@ import {ApiService} from "./shared/api/api.service";
 import {HttpClientModule} from "@angular/common/http";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { ImportantInformationsComponent } from './pages/important_informations/important_informations.component';
 import { ResultsComponent } from './pages/results/results.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import { ResultsComponent } from './pages/results/results.component';
     KalkulatorComponent,
     ImportantInformationsComponent,
     ResultsComponent,
+    LoginComponent,
+    RegistrationComponent,
   ],
     imports: [
         BrowserModule,
@@ -45,7 +50,9 @@ import { ResultsComponent } from './pages/results/results.component';
         MatInputModule,
         ReactiveFormsModule,
         MatSelectModule,
-      MatAutocompleteModule
+        MatAutocompleteModule,
+        MatCardModule,
+        FormsModule
     ],
   providers: [ApiService],
   bootstrap: [AppComponent]

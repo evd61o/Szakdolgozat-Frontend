@@ -23,6 +23,7 @@ export class ApiService {
 
   /*public getRefrigeratorsFromApi$(): Observable<Array<Refrigerator>>;
   /*public getRefrigeratorsFromApi$(): Observable<HttpResponse<Array<Refrigerator>>>;*/
+
   /*public getRefrigeratorsFromApi$(): Observable<HttpEvent<Array<Refrigerator>>>;*/
   public getRefrigeratorsFromApi$(): Observable<Refrigerator[]> {
     return this.httpClient.get<Refrigerator[]>(`${this.basePath}/hutok`);
@@ -51,6 +52,7 @@ export class ApiService {
   public getMicrowavesFromApi$(): Observable<Microwave[]> {
     return this.httpClient.get<Microwave[]>(`${this.basePath}/mikrohullamu_sutok`);
   }
+
   public getDishwashersFromApi$(): Observable<Dishwasher[]> {
     return this.httpClient.get<Dishwasher[]>(`${this.basePath}/mosogatogepek`);
   }
@@ -62,6 +64,7 @@ export class ApiService {
   public getDehumidifiersFromApi$(): Observable<Dehumidifier[]> {
     return this.httpClient.get<Dehumidifier[]>(`${this.basePath}/paraelszivok`);
   }
+
   public getOvensFromApi$(): Observable<Oven[]> {
     return this.httpClient.get<Oven[]>(`${this.basePath}/sutok`);
   }
@@ -87,4 +90,7 @@ export class ApiService {
   }
 
 }
+
+
+
 
