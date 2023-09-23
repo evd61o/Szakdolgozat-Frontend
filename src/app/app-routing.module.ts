@@ -6,6 +6,7 @@ import {ImportantInformationsComponent} from "./pages/important_informations/imp
 import {ResultsComponent} from "./pages/results/results.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {RegistrationComponent} from "./pages/registration/registration.component";
+import {ProfileComponent} from "./pages/profile/profile.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'informaciok', component:ImportantInformationsComponent },
   { path: 'eredmenyek', component:ResultsComponent },
   { path: 'bejelentkezes', component:LoginComponent },
-  { path: 'regisztracio', component:RegistrationComponent }
+  { path: 'regisztracio', component:RegistrationComponent },
+  { path: 'profil', component:ProfileComponent }
 ];
 
 @NgModule({

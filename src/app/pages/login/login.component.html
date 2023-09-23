@@ -1,35 +1,37 @@
-<form (submit)="onSubmit()">
+<form [formGroup]="form" (submit)="onSubmit()">
   <mat-sidenav-container>
     <mat-sidenav mode="side" opened>
-      <button mat-button class="menu-button" routerLink="">
+      <a mat-button class="menu-button" routerLink="">
         <mat-icon>home</mat-icon>
         <span>Home</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/kalkulator">
+      </a>
+      <a mat-button class="menu-button" routerLink="/kalkulator">
         <mat-icon>offline_bolt</mat-icon>
         <span>Kalkulátor</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/informaciok">
+      </a>
+      <a mat-button class="menu-button" routerLink="/informaciok">
         <mat-icon>warning</mat-icon>
         <span>Fontos tudnivalók</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/regisztracio">
+      </a>
+      <a mat-button class="menu-button" routerLink="/regisztracio">
         <mat-icon>person</mat-icon>
         <span>Regisztráció</span>
-      </button>
+      </a>
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="content">
         <h1>Bejelentkezés</h1>
         <mat-form-field>
-          <input matInput type="text" [(ngModel)]="loginData.username"  name="username" placeholder="Felhasználónév:">
+          E-mail cím:
+          <input matInput type="email" formControlName="email"  name="email" placeholder="Pl: pelda@pelda.pelda">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput type="password" [(ngModel)]="loginData.password"  name="password" placeholder="Jelszó:">
+          Jelszó:
+          <input matInput type="password" formControlName="password"  name="password">
         </mat-form-field>
-
         <button mat-raised-button class="loginbttn">Bejelentkezés</button>
+        <span *ngIf="errorMessage" class="registration">{{errorMessage}}</span>
 
       </div>
     </mat-sidenav-content>

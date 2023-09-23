@@ -67,3 +67,16 @@ export interface Dryer {
   Fogyasztasev?: number;
   Fogyasztasnap?: number;
 }
+
+export interface Profiles {
+  searchValueRefrigerator?: string;
+  searchValueFreezer?: string;
+  searchValueHot_plate?: string;
+  searchValueMicrowave?: string;
+  searchValueDishwasher?: string;
+  searchValueDehumidifier?: string;
+  searchValueOven?: string;
+  searchValueWashing_machine?: string;
+  searchValueDryer?: string;
+  email?: string;
+}

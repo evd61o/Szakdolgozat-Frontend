@@ -7,7 +7,7 @@ import {
   Freezer,
   Hot_plate,
   Microwave,
-  Oven,
+  Oven, Profiles,
   Refrigerator,
   Washing_machine
 } from "../../pages/interface/interfaces";
@@ -88,6 +88,12 @@ export class ApiService {
   public getSearchedDryersFromApi$(selected_dryer_y_c: number): Observable<Dryer[]> {
     return this.httpClient.get<Dryer[]>(`${this.basePath}/szaritogepek/${selected_dryer_y_c}`);
   }
+  public getProfilesFromApi$(email: string): Observable<Profiles[]> {
+    return this.httpClient.get<Profiles[]>(`${this.basePath}/profiles/${email}`);
+  }
+
+
+
 
 }
 
