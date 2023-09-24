@@ -88,6 +88,43 @@ export class ApiService {
   public getSearchedDryersFromApi$(selected_dryer_y_c: number): Observable<Dryer[]> {
     return this.httpClient.get<Dryer[]>(`${this.basePath}/szaritogepek/${selected_dryer_y_c}`);
   }
+
+  public getMinRefrigeratorFromApi$(): Observable<Refrigerator[]> {
+    return this.httpClient.get<Refrigerator[]>(`${this.basePath}/hutok/min`);
+  }
+
+  public getMinFreezerFromApi$(): Observable<Freezer[]> {
+    return this.httpClient.get<Freezer[]>(`${this.basePath}/fagyasztok/min`);
+  }
+
+  public getMinHot_PlateFromApi$(): Observable<Hot_plate[]> {
+    return this.httpClient.get<Hot_plate[]>(`${this.basePath}/fozolapok/min`);
+  }
+
+  public getMinMicrowaveFromApi$(): Observable<Microwave[]> {
+    return this.httpClient.get<Microwave[]>(`${this.basePath}/mikrohullamu_sutok/min`);
+  }
+
+  public getMinDishwasherFromApi$(): Observable<Dishwasher[]> {
+    return this.httpClient.get<Dishwasher[]>(`${this.basePath}/mosogatogepek/min`);
+  }
+
+  public getMinDehumidifierFromApi$(): Observable<Dehumidifier[]> {
+    return this.httpClient.get<Dehumidifier[]>(`${this.basePath}/paraelszivok/min`);
+  }
+
+  public getMinOvenFromApi$(): Observable<Oven[]> {
+    return this.httpClient.get<Oven[]>(`${this.basePath}/sutok/min`);
+  }
+
+  public getMinWashing_MachineFromApi$(): Observable<Washing_machine[]> {
+    return this.httpClient.get<Washing_machine[]>(`${this.basePath}/mosogepek/min`);
+  }
+
+  public getMinDryerFromApi$(): Observable<Dryer[]> {
+    return this.httpClient.get<Dryer[]>(`${this.basePath}/szaritogepek/min`);
+  }
+
   public getProfilesFromApi$(email: string): Observable<Profiles[]> {
     return this.httpClient.get<Profiles[]>(`${this.basePath}/profiles/${email}`);
   }

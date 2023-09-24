@@ -34,8 +34,8 @@
               <mat-option *ngFor="let refrigerator of filteredOptionsRefrigerators | async" [value]="refrigerator.Modell">
                 Márka: {{refrigerator.Marka}}
                 Modell: {{refrigerator.Modell}}
-                Típus: {{refrigerator.Tipus}} <br>
-                Méret (liter): {{refrigerator.Meret}}
+                Típus: {{refrigerator.Tipus}}
+                Méret: {{refrigerator.Meret}} liter
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -53,7 +53,7 @@
               Márka: {{freezer.Marka}}
               Modell: {{freezer.Modell}}
               Energia o: {{freezer.Energiahatekonysagi_osztaly}}
-              Méret (liter): {{freezer.Meret}}
+              Méret: {{freezer.Meret}} liter
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -71,7 +71,7 @@
               Márka: {{hot_plate.Marka}}
               Modell: {{hot_plate.Modell}}
               Típus: {{hot_plate.Tipus}}
-              Teljesítmény (W): {{hot_plate.Teljesitmeny}}
+              Teljesítmény: {{hot_plate.Teljesitmeny}} W
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -89,7 +89,7 @@
               Márka: {{microwave.Marka}}
               Modell: {{microwave.Modell}}
               Típus: {{microwave.Tipus}}
-              Teljesítmény (W): {{microwave.Teljesitmeny}}
+              Teljesítmény: {{microwave.Teljesitmeny}} W
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -123,8 +123,8 @@
             <mat-option *ngFor="let dehumidifier of filteredOptionsDehumidifiers | async" [value]="dehumidifier.Modell">
               Márka: {{dehumidifier.Marka}}
               Modell: {{dehumidifier.Modell}}
-              Energia o: {{dehumidifier.Energiahatekonysagi_osztaly}}
-              Teljesítmény (W): {{dehumidifier.Teljesitmeny}}
+              Energiahatékonysági O: {{dehumidifier.Energiahatekonysagi_osztaly}} <br>
+              Teljesítmény: {{dehumidifier.Teljesitmeny}} W
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -141,8 +141,8 @@
             <mat-option *ngFor="let oven of filteredOptionsOvens | async" [value]="oven.Modell">
               Márka: {{oven.Marka}}
               Modell: {{oven.Modell}}
-              Energia o: {{oven.Energiahatekonysagi_osztaly}} <br>
-              Teljesítmény (W): {{oven.Teljesitmeny}}
+              Energiahatékonysági O: {{oven.Energiahatekonysagi_osztaly}} <br>
+              Teljesítmény: {{oven.Teljesitmeny}} W
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -160,9 +160,9 @@
               Márka: {{washing_machine.Marka}}
               Modell: {{washing_machine.Modell}}
               Típus: {{washing_machine.Tipus}}  <br>
-              Max töltetsúly (kg): {{washing_machine.Max_toltetsuly}}
+              Max töltetsúly: {{washing_machine.Max_toltetsuly}}kg
               Max centrifuga ford.szám: {{washing_machine.Max_cent_ford}}
-              Energiahatékonysági o: {{washing_machine.Energiahatekonysagi_osztaly}}
+              Energiahatékonysági O: {{washing_machine.Energiahatekonysagi_osztaly}}
             </mat-option>
           </mat-autocomplete>
           </mat-form-field>
@@ -179,87 +179,88 @@
               <mat-option *ngFor="let dryer of filteredOptionsDryers | async" [value]="dryer.Modell">
                 Márka: {{dryer.Marka}}
                 Modell: {{dryer.Modell}}
-                Max töltetsúly (kg): {{dryer.Max_toltetsuly}} <br>
+                Max töltetsúly: {{dryer.Max_toltetsuly}}kg <br>
                 Energiahatékonysági o: {{dryer.Energiahatekonysagi_osztaly}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-          <mat-form-field class="searchBar2" *ngIf="showMe">
+          <h1 *ngIf="showAfterKalkulate">Villamosenergia fogyasztás csökkentő javaslatok:</h1>
+          <mat-form-field class="searchBar2" *ngIf="showAfterKalkulate">
             <mat-label class="labelname">Ezeknek a hűtőknek a használatával javíthat a fogyasztásán:</mat-label>
             <mat-select class="matselect">
               <mat-option *ngFor="let refrigerator of refrigerators_w_lower_consumption" [value]="refrigerator" >
                 Márka: {{refrigerator.Marka}}
                 Modell: {{refrigerator.Modell}}
-                Méret (l): {{refrigerator.Meret}} <br>
-                Éves fogyasztás (kWh): {{refrigerator.Fogyasztasev}}
+                Méret: {{refrigerator.Meret}} liter <br>
+                Éves fogyasztás: {{refrigerator.Fogyasztasev}} kWh
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="searchBar2" *ngIf="showMe">
+          <mat-form-field class="searchBar2" *ngIf="showAfterKalkulate">
             <mat-label class="labelname">Ezeknek a fagyasztóknak a használatával javíthat a fogyasztásán:</mat-label>
             <mat-select class="matselect">
               <mat-option *ngFor="let freezer of freezers_w_lower_consumption" [value]="freezer" >
                 Márka: {{freezer.Marka}}
                 Modell: {{freezer.Modell}}
-                Méret (l): {{freezer.Meret}} <br>
-                Éves fogyasztás (kWh): {{freezer.Fogyasztasev}}
+                Méret: {{freezer.Meret}} liter <br>
+                Éves fogyasztás: {{freezer.Fogyasztasev}} kWh
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="searchBar2" *ngIf="showMe">
+          <mat-form-field class="searchBar2" *ngIf="showAfterKalkulate">
             <mat-label class="labelname">Ezeknek a főzőlapoknak a használatával javíthat a fogyasztásán:</mat-label>
             <mat-select class="matselect">
               <mat-option *ngFor="let hot_plates of hot_plates_w_lower_consumption" [value]="hot_plates" >
                 Márka: {{hot_plates.Marka}}
                 Modell: {{hot_plates.Modell}}
-                Fogyasztás (kWh): {{hot_plates.Fogyasztas}}
+                Fogyasztás: {{hot_plates.Fogyasztas}} kWh
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="searchBar2" *ngIf="showMe">
+          <mat-form-field class="searchBar2" *ngIf="showAfterKalkulate">
             <mat-label class="labelname">Ezeknek a mosogatógépeknek a használatával javíthat a fogyasztásán:</mat-label>
             <mat-select class="matselect">
               <mat-option *ngFor="let dishwasher of dishwashers_w_lower_consumption" [value]="dishwasher" >
                 Márka: {{dishwasher.Marka}}
                 Modell: {{dishwasher.Modell}}
-                Tipus: {{dishwasher.Tipus}}
-                Fogyasztás 1 eco program alatt (kWh): {{dishwasher.Fogyasztas_kWh_eco_program}}
+                Tipus: {{dishwasher.Tipus}} <br>
+                Fogyasztás 1 eco program alatt: {{dishwasher.Fogyasztas_kWh_eco_program}} kWh
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="searchBar2" *ngIf="showMe">
+          <mat-form-field class="searchBar2" *ngIf="showAfterKalkulate">
             <mat-label class="labelname">Ezeknek a sütőknek a használatával javíthat a fogyasztásán:</mat-label>
             <mat-select class="matselect">
               <mat-option *ngFor="let oven of ovens_w_lower_consumption" [value]="oven" >
                 Márka: {{oven.Marka}}
                 Modell: {{oven.Modell}}
-                Fogyasztás (kWh): {{oven.Fogyasztas}}
+                Fogyasztás: {{oven.Fogyasztas}} kWh
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="searchBar2" *ngIf="showMe">
+          <mat-form-field class="searchBar2" *ngIf="showAfterKalkulate">
             <mat-label class="labelname">Ezeknek a mosógépeknek a használatával javíthat a fogyasztásán:</mat-label>
             <mat-select class="matselect">
               <mat-option *ngFor="let washing_machine of washing_machines_w_lower_consumption" [value]="washing_machine" >
                 Márka: {{washing_machine.Marka}}
                 Modell: {{washing_machine.Modell}} <br>
-                Fogyasztás egy eco 40-60 program alatt: {{washing_machine.Fogyasztas_eco_40_60_program}}
+                Fogyasztás egy eco 40-60 program alatt: {{washing_machine.Fogyasztas_eco_40_60_program}} kWh
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="searchBar2" *ngIf="showMe">
+          <mat-form-field class="searchBar2" *ngIf="showAfterKalkulate">
             <mat-label class="labelname">Ezeknek a szárítógépeknek a használatával javíthat a fogyasztásán:</mat-label>
             <mat-select class="matselect">
               <mat-option *ngFor="let dryer of dryers_w_lower_consumption" [value]="dryer" >
                 Márka: {{dryer.Marka}}
                 Modell: {{dryer.Modell}}
-                Éves fogyasztás: {{dryer.Fogyasztasev}}
+                Éves fogyasztás: {{dryer.Fogyasztasev}} kWh
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -309,35 +310,63 @@
             formControlName="searchBarWashingMachineEcoProgram40_60CountInput"
             class="searchBarHoursInput">
         <button mat-raised-button type="submit">Számolás</button>
-        <p class="results">
-          Napi áramfogyasztás (kWh): {{power_consumption_daily}}
+          <h1>Ajánlás, jelenleg ezek a legkevesebb vilamosenergiát fogyasztó háztartási gépek:</h1>
+          <p *ngFor="let huto of minrefrigerator" >
+            hűtő: {{huto.Marka}} {{huto.Modell}} {{huto.Fogyasztasev}} kWh/év
+          </p>
+          <p *ngFor="let fagyaszto of minfreezer">
+            fagyasztó: {{fagyaszto.Marka}} {{fagyaszto.Modell}} {{fagyaszto.Fogyasztasev}} kWh/év
+          </p>
+          <p *ngFor="let fozolap of minhot_plate">
+            főzőlap: {{fozolap.Marka}} {{fozolap.Modell}} {{fozolap.Fogyasztas}} kWh
+          </p>
+          <p *ngFor="let mikrohullamu_suto of minmicrowave">
+            sütő: {{mikrohullamu_suto.Marka}} {{mikrohullamu_suto.Modell}} {{mikrohullamu_suto.Fogyasztas}} kWh
+          </p>
+          <p *ngFor="let mosogatogep of mindishwasher">
+            mosogatógép: {{mosogatogep.Marka}} {{mosogatogep.Modell}} {{mosogatogep.Fogyasztas_kWh_eco_program}} kWh/eco program
+          </p>
+          <p *ngFor="let paraelszivo of mindehumidifier">
+            páraelszívó: {{paraelszivo.Marka}} {{paraelszivo.Modell}} {{paraelszivo.Fogyasztas}} kWh
+          </p>
+          <p *ngFor="let suto of minoven">
+            sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Fogyasztas}} kWh
+          </p>
+          <p *ngFor="let mosogep of minwashing_machine">
+            mosógép: {{mosogep.Marka}} {{mosogep.Modell}} {{mosogep.Fogyasztas_eco_40_60_program}} kWh/eco 40-60 program
+          </p>
+          <p *ngFor="let szaritogep of mindehumidifier">
+            szárítógép: {{szaritogep.Marka}} {{szaritogep.Modell}} {{szaritogep.Fogyasztas}} kWh
+          </p>
+        <p class="results" *ngIf="showAfterKalkulate">
+          Napi áramfogyasztás: {{power_consumption_daily}} kWh
         </p>
-        <p class="results">
-          Havi áramfogyasztás (kWh): {{power_consumption_monthly}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Havi áramfogyasztás: {{power_consumption_monthly}} kWh
         </p>
-        <p class="results">
-          Évi áramfogyasztás (kWh): {{power_consumption_yearly}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Évi áramfogyasztás: {{power_consumption_yearly}} kWh
         </p>
-        <p class="results">
-          Kiválasztott hűtő éves fogyasztása (kWh): {{selected_refrigerator_y_c}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Kiválasztott hűtő éves fogyasztása: {{selected_refrigerator_y_c}} kWh
         </p>
-        <p class="results">
-          Kiválasztott fagyasztó éves fogyasztása (kWh): {{selected_freezer_y_c}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Kiválasztott fagyasztó éves fogyasztása: {{selected_freezer_y_c}} kWh
         </p>
-        <p class="results">
-          Kiválasztott szárítógép éves fogyasztása (kWh): {{selected_dryer_y_c}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Kiválasztott szárítógép éves fogyasztása: {{selected_dryer_y_c}} kWh
         </p>
-        <p class="results">
-          Kiválasztott főzőlap fogyasztása (kWh): {{selected_hot_plate_c}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Kiválasztott főzőlap fogyasztása: {{selected_hot_plate_c}} kWh
         </p>
-        <p class="results">
-          Kiválasztott sütő fogyasztása (kWh): {{selected_oven_c}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Kiválasztott sütő fogyasztása): {{selected_oven_c}} kWh
         </p>
-        <p>
-          Kiválasztott mosogatógép fogyasztása 1 eco program alatt (kWh): {{selected_dishwasher_ep_c}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Kiválasztott mosogatógép fogyasztása 1 eco program alatt: {{selected_dishwasher_ep_c}} kWh
         </p>
-        <p class="results">
-          Kiválasztott mosógép súlyozott fogyasztása 1 eco 40-60 program alatt (kWh): {{selected_washing_m_ep40_60_c}}
+        <p class="results" *ngIf="showAfterKalkulate">
+          Kiválasztott mosógép súlyozott fogyasztása 1 eco 40-60 program alatt : {{selected_washing_m_ep40_60_c}} kWh
         </p>
         </div>
       </div>

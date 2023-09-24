@@ -20,7 +20,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { ImportantInformationsComponent } from './pages/important_informations/important_informations.component';
-import { ResultsComponent } from './pages/results/results.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import {MatCardModule} from "@angular/material/card";
@@ -34,7 +33,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
     FooterComponent,
     KalkulatorComponent,
     ImportantInformationsComponent,
-    ResultsComponent,
     LoginComponent,
     RegistrationComponent,
     ProfileComponent,

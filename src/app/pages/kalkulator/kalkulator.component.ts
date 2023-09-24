@@ -21,26 +21,36 @@ import {first, map, Observable, startWith, Subject, switchMap, takeUntil} from "
 
 })
 export class KalkulatorComponent implements OnInit, OnDestroy {
-  showMe:boolean = false;
+  showBeforeKalkulate:boolean = true;
+  showAfterKalkulate:boolean = false;
   loading:boolean = false;
 
   private onDestroy$ = new Subject<void>();
 
   public refrigerators!: Refrigerator[];
+  public minrefrigerator!: Refrigerator[];
   public refrigerators_w_lower_consumption!: Refrigerator[];
   public freezers!: Freezer[];
+  public minfreezer!: Freezer[];
   public freezers_w_lower_consumption!: Freezer[];
   public hot_plates!: Hot_plate[];
+  public minhot_plate!: Hot_plate[];
   public hot_plates_w_lower_consumption!: Hot_plate[];
   public microwaves!: Microwave[];
+  public minmicrowave!: Microwave[];
   public dishwashers!: Dishwasher[];
+  public mindishwasher!: Dishwasher[];
   public dishwashers_w_lower_consumption!: Dishwasher[];
   public dehumidifiers! : Dehumidifier[];
+  public mindehumidifier!: Dehumidifier[];
   public ovens! : Oven[];
+  public minoven!: Oven[];
   public ovens_w_lower_consumption! : Oven[];
   public washing_machines! :Washing_machine[];
+  public minwashing_machine!: Washing_machine[];
   public washing_machines_w_lower_consumption! :Washing_machine[];
   public dryers! :Dryer[];
+  public mindryer!: Dryer[];
   public dryers_w_lower_consumption! :Dryer[];
 
   public filteredOptionsRefrigerators!: Observable<Refrigerator[]>;
@@ -253,6 +263,42 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.apiService.getMinRefrigeratorFromApi$().subscribe((minrefrigerator) => {
+      this.minrefrigerator = minrefrigerator;
+    });
+
+    this.apiService.getMinFreezerFromApi$().subscribe((minfreezer) => {
+      this.minfreezer = minfreezer;
+    });
+
+    this.apiService.getMinHot_PlateFromApi$().subscribe((minhot_plate) => {
+      this.minhot_plate = minhot_plate;
+    });
+
+    this.apiService.getMinMicrowaveFromApi$().subscribe((minmicrowave) => {
+      this.minmicrowave = minmicrowave;
+    });
+
+    this.apiService.getMinDishwasherFromApi$().subscribe((mindishwasher) => {
+      this.mindishwasher = mindishwasher;
+    });
+
+    this.apiService.getMinDehumidifierFromApi$().subscribe((mindehumidifier) => {
+      this.mindehumidifier = mindehumidifier;
+    });
+
+    this.apiService.getMinOvenFromApi$().subscribe((minoven) => {
+      this.minoven = minoven;
+    });
+
+    this.apiService.getMinWashing_MachineFromApi$().subscribe((minwashing_machine) => {
+      this.minwashing_machine = minwashing_machine;
+    });
+
+    this.apiService.getMinDryerFromApi$().subscribe((mindryer) => {
+      this.mindryer = mindryer;
+    });
+
   };
 
 
@@ -340,7 +386,8 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     this.selected_washing_m_ep40_60_c = washing_machine_eco_40_60_program_consumption;
     this.selected_dryer_y_c = dryer_yearly_consumption;
 
-    this.showMe=true;
+    this.showBeforeKalkulate=false;
+    this.showAfterKalkulate=true;
     this.loading=true;
   }
 

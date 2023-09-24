@@ -65,6 +65,17 @@ mat-sidenav-container{
     flex-wrap: wrap;
     align-items: center;
   }
+  h1{
+    font-size: 23px;
+    font-family: Impact;
+    color: burlywood;
+  }
+  .recommendation{
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: 19px;
+
+  }
 }
 
 .menu-button{

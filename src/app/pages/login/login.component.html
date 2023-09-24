@@ -1,24 +1,6 @@
 <form [formGroup]="form" (submit)="onSubmit()">
-  <mat-sidenav-container>
-    <mat-sidenav mode="side" opened>
-      <a mat-button class="menu-button" routerLink="">
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
-      </a>
-      <a mat-button class="menu-button" routerLink="/kalkulator">
-        <mat-icon>offline_bolt</mat-icon>
-        <span>Kalkulátor</span>
-      </a>
-      <a mat-button class="menu-button" routerLink="/informaciok">
-        <mat-icon>warning</mat-icon>
-        <span>Fontos tudnivalók</span>
-      </a>
-      <a mat-button class="menu-button" routerLink="/regisztracio">
-        <mat-icon>person</mat-icon>
-        <span>Regisztráció</span>
-      </a>
-    </mat-sidenav>
-    <mat-sidenav-content>
+  <div class="home">
+    <div class="content">
       <div class="content">
         <h1>Bejelentkezés</h1>
         <mat-form-field>
@@ -34,6 +16,6 @@
         <span *ngIf="errorMessage" class="registration">{{errorMessage}}</span>
 
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+    </div>
+  </div>
 </form>

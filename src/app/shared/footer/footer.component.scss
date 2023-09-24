@@ -1,10 +1,28 @@
-mat-toolbar{
-  background: burlywood;
-  color: black;
-  border-radius: 15px;
-  font-family: Impact;
+.footer{
+  overflow: hidden;
+  background-color: black;
+  padding: 20px 13px;
+  position: sticky;
+  top: 100%;
 }
 
-.footerdiv{
-  background-color: #7B3A18;
+h1{
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 14px;
+}
+i{
+  color: lightblue;
+  padding: 5px;
+}
+a:hover
+{
+  color: lightblue;
 }

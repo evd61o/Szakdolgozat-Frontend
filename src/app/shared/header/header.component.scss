@@ -1,11 +1,9 @@
-mat-toolbar{
-  background: burlywood;
+.navbar-light .navbar-nav .nav-link
+{
   color: black;
-  border-radius: 15px;
-  font-family: Impact;
 }
-
-.headerdiv{
-  background-color: #7B3A18;
+.navbar-light .navbar-nav .nav-link.active-link
+{
+  color: darkblue;
+  text-decoration: underline;
 }
-
