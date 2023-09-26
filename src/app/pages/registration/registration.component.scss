@@ -1,51 +1,43 @@
-mat-sidenav{
-  margin: 16px;
-  width: 200px;
-  border-right: none;
-  background: burlywood;
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-}
-mat-sidenav-container{
-  height: calc(100vh - 65px);
-  background-color: #7B3A18;
-}
-
-.content{
-  height: calc(100vh - 98px);
-  margin: 16px;
-  margin-left: 32px;
+.home{
+  background-image: url("/assets/home2.jpg");
+  background-position: center top;
+  background-size: cover;
   display: flex;
-  flex-direction: column;;
-  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  align-content: center;
+  height: 100-13vh;
 }
-.menu-button{
-  font-family: Impact;
-  margin-bottom: 10px;
+.registration {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  button{
+    background-color: black;
+    color: white;
+  }
+
+  button:hover{
+    background-color: lightblue;
+    color: black;
+  }
 }
 
-h1{
-  color: burlywood;
-  font-size: 40px;
-  font-family: Impact;
+.home h1{
+  color: black;
+  font-size: 45px;
+  font-weight: bold;
 }
 
-mat-form-field{
-  width: 300px;
-  font-family: Impact;
-}
-
-.registrationbttn{
-  font-size: 16px;
-  font-family: Impact;
-}
-
-.registration{
-  margin-top: 16px;
-  font-size: 16px;
+.registrationerror{
+  margin-top: 5px;
+  font-weight: bold;
   color: red;
-  font-family: Impact;
 }
+
+

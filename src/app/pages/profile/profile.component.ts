@@ -24,7 +24,8 @@ export class ProfileComponent {
 
   public apiRequestInProgress: boolean = false;
   public show:boolean = false;
-  public userEmail = '';
+  public errorMessage= '';
+  public userEmail = this.loginService.getUserEmail();
 
   public refrigerators!: Refrigerator[];
   public freezers!: Freezer[];
@@ -35,7 +36,6 @@ export class ProfileComponent {
   public ovens!: Oven[];
   public washing_machines!: Washing_machine[];
   public dryers!: Dryer[];
-  public profiles!: Profiles[];
 
   public filteredOptionsRefrigerators!: Observable<Refrigerator[]>;
   public filteredOptionsFreezers!: Observable<Freezer[]>;
@@ -58,24 +58,12 @@ export class ProfileComponent {
     searchValueOven: ['', Validators.required],
     searchValueWashing_machine: ['', Validators.required],
     searchValueDryer: ['', Validators.required],
-    email: ''
 
 
 
   });
 
-  constructor(public readonly apiService: ApiService, private http: HttpClient, private fb: FormBuilder, private loginService: LoginService) {
-
-    this.loginService.getUserEmail().subscribe((email) => {
-      this.userEmail = email;
-      const signedemail = {
-        email: email,
-      };
-
-      this.form.patchValue(signedemail);
-
-    });
-
+  constructor(public readonly apiService: ApiService, private http: HttpClient, private fb: FormBuilder, private readonly loginService: LoginService) {
   }
 
   public ngOnInit(): void {
@@ -174,13 +162,11 @@ export class ProfileComponent {
         );
       });
 
-    this.apiService.getProfilesFromApi$(this.form.value.email!)
+    this.apiService.getProfilesFromApi$(this.loginService.getUserEmail())
       .pipe(first())
       .subscribe((profiles) => {
-        this.profiles = [];
-        this.profiles.push(<Profiles>profiles);
+        this.form.patchValue(profiles[0]);
       });
-
 
   };
 
@@ -190,31 +176,48 @@ export class ProfileComponent {
     return object.filter(option => option?.Modell?.toLowerCase().includes(value.toLowerCase()) || option?.Marka?.toLowerCase().includes(value.toLowerCase()));
   }
 
-  onSubmit() {
-    if (this.form.valid && this.form.enabled) {
-      this.form.value.email = this.userEmail;
-      this.apiRequestInProgress = true;
-      this.form.disable();
-      this.http.post('http://localhost:3000/profiles', this.form.value).subscribe(response => {
-        console.log(this.form.value.email);
-        console.log('A mentés sikeres!', response);
-        this.apiRequestInProgress = false;
-        this.form.enable();
-      }, error => {
-        console.error('A mentés sikertelen!', error);
-        this.show = true;
-        this.apiRequestInProgress = false;
-        this.form.enable();
-      });
-    }
-    if (this.form.invalid && this.form.enabled) {
-      this.form.markAllAsTouched();
-    }
-  }
-  onSubmit2(){
-    console.log(this.profiles);
+  public onSubmit() {
+    const profileFavorites = {
+      ...this.form.value,
+      email: this.loginService.getUserEmail()
+    };
 
+    this.apiService.profile$(profileFavorites).subscribe(response => {
+        this.errorMessage = 'A mentés sikeres!';
+        console.log('Skeres mentés', response);
+        // Egyéb kezelés, például átirányítás
+      }, (error) => {
+        if (error.status === 500) {
+          // Sikertelen mentés, jeleníts meg egy hibaüzenetet
+          this.errorMessage = 'Hiba a profil mentésekor!';
+          console.error('Hiba a profil mentésekor!', error);
+        } else {
+          // Egyéb hiba, kezeld aszerint
+          console.error('A mentés sikertelen!', error);
+        }
+      }
+    );
 
+  //   if (this.form.valid && this.form.enabled) {
+  //     this.form.value.email = this.userEmail;
+  //     this.apiRequestInProgress = true;
+  //     this.form.disable();
+  //     this.http.post('http://localhost:3000/profiles', this.form.value).subscribe(response => {
+  //       console.log(this.form.value.email);
+  //       console.log('A mentés sikeres!', response);
+  //       this.apiRequestInProgress = false;
+  //       this.form.enable();
+  //     }, error => {
+  //       console.error('A mentés sikertelen!', error);
+  //       this.show = true;
+  //       this.apiRequestInProgress = false;
+  //       this.form.enable();
+  //     });
+  //   }
+  //   if (this.form.invalid && this.form.enabled) {
+  //     this.form.markAllAsTouched();
+  //   }
+  // }
 
   }
 

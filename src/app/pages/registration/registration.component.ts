@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
+import {ApiService} from "../../shared/api/api.service";
 
 @Component({
   selector: 'app-registration',
@@ -22,14 +23,14 @@ export class RegistrationComponent {
 
   });
 
-  constructor(private  http: HttpClient, private fb: FormBuilder, private router: Router){
+  constructor(private readonly apiService: ApiService, private fb: FormBuilder, private router: Router){
   }
 
   onSubmit() {
     if (this.form.valid && this.form.enabled) {
       this.apiRequestInProgress = true;
       this.form.disable();
-      this.http.post('http://localhost:3000/users', this.form.value).subscribe(response => {
+      this.apiService.register$(this.form.value).subscribe(response => {
         console.log('Sikeres Regisztráció!', response);
         this.router.navigate(['/bejelentkezes']);
         this.apiRequestInProgress = false;

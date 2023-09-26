@@ -1,39 +1,26 @@
-mat-sidenav{
-  margin: 16px;
-  width: 200px;
-  border-right: none;
-  background: burlywood;
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-}
-mat-sidenav-container{
-  height: calc(100vh - 65px);
-  background-color: #7B3A18;
+.home{
+  background-image: url("/assets/home2.jpg");
+  background-position: center top;
+  background-size: cover;
+  height: 140vh;
 }
 
 .content{
-  height: calc(100vh - 98px);
-  margin: 16px;
-  margin-left: 32px;
-  font-family: Impact;
-  color: burlywood;
-  h1{
-    font-family: Impact;
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  h2{
-    font-family: Impact;
-    font-size: 27px;
-    margin-top: 30px;
-  }
-  p{
-    font-size: 17px;
-    margin-top: 30px;
-  }
+  padding: 17px;
 }
-.menu-button{
-  font-family: Impact;
-  margin-bottom: 10px;
+
+.content h1{
+  color: white;
+  font-size: 34px;
+  font-weight: bold;
 }
+.content h2{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.content p{
+  color: white;
+  font-size: 16px;
+}
+

@@ -1,17 +1,41 @@
 .home{
-  background-image: url("/assets/home2.png");
-  height: 800px;
+  background-image: url("/assets/home2.jpg");
   background-position: center top;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100-13vh;
 }
-.content{
-  top: 40%;
-  left: 3%;
-  position: absolute;
+.login{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  button{
+    color: white;
+    background-color: black;
+  }
+  button:hover{
+     background-color: lightblue;
+     color: black;
+   }
 
 }
 .home h1{
-  color: white;
+  color: black;
   font-size: 45px;
   font-weight: bold;
 }
+
+.errormessage{
+  margin-top: 5px;
+  font-weight: bold;
+  color: red;
+}
+

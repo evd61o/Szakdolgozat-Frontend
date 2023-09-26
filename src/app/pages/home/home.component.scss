@@ -1,5 +1,5 @@
 .home{
-  background-image: url("/assets/home2.png");
+  background-image: url("/assets/home.png");
   height: 800px;
   background-position: center top;
   background-size: cover;
@@ -12,7 +12,7 @@
 }
 .home h1{
   color: white;
-  font-size: 45px;
+  font-size: 30px;
   font-weight: bold;
 }
 .content a{
@@ -26,6 +26,11 @@
 .content a:hover{
   background-color: black;
   color: white;
+}
+.errorMessage{
+  margin-top: 5px;
+  color: red;
+  font-weight: bold;
 }
 .stepBox{
   background-color: black;

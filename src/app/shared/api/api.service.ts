@@ -129,6 +129,18 @@ export class ApiService {
     return this.httpClient.get<Profiles[]>(`${this.basePath}/profiles/${email}`);
   }
 
+  public register$(user: any): Observable<Object> {
+    return this.httpClient.post<Object>(this.basePath+'/users', user);
+  }
+
+  public login$(user: any): Observable<Object> {
+    return this.httpClient.post<Object>(this.basePath+'/users', user);
+  }
+
+  public profile$(favorites: any): Observable<Object> {
+    return this.httpClient.post<Object>(this.basePath+'/profiles', favorites);
+  }
+
 
 
 

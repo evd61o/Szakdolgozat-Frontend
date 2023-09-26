@@ -5,10 +5,9 @@
       <h1>Villamosenergia költség monitorozása háztartásban</h1>
     </div>
     <div class="col-lg-5">
-      <a routerLink="">Home</a>
-      <a routerLink="informaciok">Tudnivalók</a>
-      <a routerLink="bejelentkezes">Bejelentkezés</a>
-      <a routerLink="regisztracio">Regisztráció</a>
+      <a routerLink="bejelentkezes" *ngIf="!loginService.getUserEmail()">Bejelentkezés</a>
+      <a routerLink="regisztracio" *ngIf="!loginService.getUserEmail()">Regisztráció</a>
+      <a routerLink="kijelentkezes" *ngIf="loginService.getUserEmail()">Kijelentkezés</a>
     </div>
     <div class="col-lg-1">
       <a href=""><i class="bi bi-facebook"></i></a>

@@ -13,10 +13,19 @@
           <a class="nav-link" routerLink="informaciok" routerLinkActive="active-link">Tudnivalók</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" routerLink="kalkulator" routerLinkActive="active-link">Kalkulátor</a>
+        </li>
+        <li class="nav-item" *ngIf="!loginService.getUserEmail()">
           <a class="nav-link" routerLink="bejelentkezes" routerLinkActive="active-link">Bejelentkezés</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="loginService.getUserEmail()">
+          <a class="nav-link" routerLink="kijelentkezes" routerLinkActive="active-link">Kijelentkezés</a>
+        </li>
+        <li class="nav-item" *ngIf="!loginService.getUserEmail()">
           <a class="nav-link" routerLink="regisztracio" routerLinkActive="active-link">Regisztráció</a>
+        </li>
+        <li class="nav-item" *ngIf="loginService.getUserEmail()">
+          <a class="nav-link" routerLink="profil" routerLinkActive="active-link">Profil</a>
         </li>
       </ul>
     </div>

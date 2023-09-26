@@ -1,17 +1,31 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import {Profiles} from "../../pages/interface/interfaces";
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  private userEmailSubject = new BehaviorSubject<string>('');
+  private userEmail: string = "";
+  private userProfil!: Profiles;
 
-  setUserEmail(email: string): void {
-    this.userEmailSubject.next(email);
+  public setUserEmail(email: string): void {
+    this.userEmail = email;
+    localStorage.setItem("email", email);
   }
 
-  getUserEmail(): BehaviorSubject<string> {
-    return this.userEmailSubject;
+  public getUserEmail(): string {
+    if (this.userEmail === "" && localStorage.getItem("email") !== "") {
+      this.userEmail = localStorage.getItem("email")!;
+    }
+    return this.userEmail;
+  }
+
+  public removeData(key: string) {
+    localStorage.removeItem("email");
+  }
+
+  public clearData() {
+    localStorage.clear();
   }
 }

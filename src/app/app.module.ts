@@ -24,6 +24,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import {MatCardModule} from "@angular/material/card";
 import { ProfileComponent } from './pages/profile/profile.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     LoginComponent,
     RegistrationComponent,
     ProfileComponent,
+    LogoutComponent,
   ],
     imports: [
         BrowserModule,

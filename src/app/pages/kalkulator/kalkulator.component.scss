@@ -1,41 +1,33 @@
-mat-sidenav{
-  margin: 16px;
-  width: 200px;
-  border-right: none;
-  background: burlywood;
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-}
-mat-sidenav-container{
-  height: calc(100vh - 65px);
-  background-color: #7B3A18;
+.home{
+  background-image: url("/assets/home2.jpg");
 }
 
+
 .content{
-  height: calc(100vh - 98px);
-  margin: 16px;
-  margin-left: 32px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   button{
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     height: 50px;
     width: 150px;
-    font-size: 20px;
-    font-family: Impact;
-    color: black;
-    background-color: burlywood;
-    border-radius: 15px;
+    font-weight: bold;
+    border-radius: 10px;
   }
-  mat-label{
-    font-size: 20px;
-    font-family: Impact;
+  button:hover{
+    background-color: lightblue;
   }
 
   .searchBar{
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+      width: 320px;
+    }
+    width: 600px;
+    margin-top: 20px;
+    margin-left: 15px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -47,19 +39,26 @@ mat-sidenav-container{
     margin-top: 15px;
   }
 
-  .searchBarHoursInput{
-    background-color: burlywood;
-    font-family: Impact;
-    width: 50px;
-    height: 30px;
+  .asd{
+    margin-top: 20px;
+    padding: 30px;
     border-radius: 15px;
-    font-size: 18px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    input{
+      border-radius: 10px;
+      font-size: 15px;
+    }
   }
 
   .hoursInput{
-    font-size: 20px;
-    font-family: Impact;
-    color: burlywood;
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+      margin:auto;
+    }
+    margin-left: 160px;
+    color: black;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -67,21 +66,37 @@ mat-sidenav-container{
   }
   h1{
     font-size: 23px;
-    font-family: Impact;
-    color: burlywood;
+    color: lightblue;
   }
   .recommendation{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    font-size: 19px;
+    font-size: 15px;
 
   }
+
+  .results{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: 15px;
+  }
+
 }
 
-.menu-button{
-  font-family: Impact;
-  margin-bottom: 10px;
-}
 
 
 
