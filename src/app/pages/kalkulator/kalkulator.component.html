@@ -300,6 +300,7 @@
 
         <button mat-raised-button type="submit"  value="szamolas" id="szamolasButton" (click)="setSubmitType('szamolas')">Számolás</button>
         <button mat-raised-button type="submit"  value="betoltes" id="betoltesButton" (click)="setSubmitType('betoltes')">Profil betöltése</button>
+        <p class="errorMessage">{{errorMessage}}</p>
         <div class="recommendation" *ngIf="showBeforeKalkulate">
           <h1>Ajánlás, jelenleg ezek a legkevesebb vilamosenergiát fogyasztó háztartási gépek:</h1>
           <p *ngFor="let huto of minrefrigerator" >
@@ -312,7 +313,7 @@
             Főzőlap: {{fozolap.Marka}} {{fozolap.Modell}} {{fozolap.Fogyasztas}} kWh
           </p>
           <p *ngFor="let mikrohullamu_suto of minmicrowave">
-            Sütő: {{mikrohullamu_suto.Marka}} {{mikrohullamu_suto.Modell}} {{mikrohullamu_suto.Fogyasztas}} kWh
+            Mikrohullámú sütő: {{mikrohullamu_suto.Marka}} {{mikrohullamu_suto.Modell}} {{mikrohullamu_suto.Fogyasztas}} kWh
           </p>
           <p *ngFor="let mosogatogep of mindishwasher">
             Mosogatógép: {{mosogatogep.Marka}} {{mosogatogep.Modell}} {{mosogatogep.Fogyasztas_kWh_eco_program}} kWh/eco program
@@ -353,7 +354,7 @@
             Kiválasztott főzőlap fogyasztása: {{selected_hot_plate_c}} kWh
           </p>
           <p>
-            Kiválasztott sütő fogyasztása): {{selected_oven_c}} kWh
+            Kiválasztott sütő fogyasztása: {{selected_oven_c}} kWh
           </p>
           <p>
             Kiválasztott mosogatógép fogyasztása 1 eco program alatt: {{selected_dishwasher_ep_c}} kWh

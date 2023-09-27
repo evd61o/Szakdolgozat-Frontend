@@ -18,6 +18,11 @@
   button:hover{
     background-color: lightblue;
   }
+  .errorMessage{
+    font-weight: bold;
+    color: red;
+  }
+
 
   .searchBar{
     @media only screen

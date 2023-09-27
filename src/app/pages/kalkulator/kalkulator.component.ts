@@ -22,10 +22,12 @@ import {LoginService} from "../../shared/api/login.service";
 
 })
 export class KalkulatorComponent implements OnInit, OnDestroy {
+  public apiRequestInProgress: boolean = false;
   showBeforeKalkulate:boolean = true;
   showAfterKalkulate:boolean = false;
   loading:boolean = false;
   private  submitType:string = '';
+  public errorMessage = '';
 
   private onDestroy$ = new Subject<void>();
 
@@ -328,98 +330,107 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
   }
   public onSubmit() {
     if (this.submitType === 'betoltes'){
-      this.form.patchValue(this.profiles[0]);
-
+      if(!this.loginService.getUserEmail()){
+        this.errorMessage = 'Jelentkezz be a profilod betöltéséhez!';
+      } else {
+        this.form.patchValue(this.profiles[0]);
+      }
     }
     if (this.submitType === 'szamolas'){
 
-      const form_value = this.form.value;
+      if (this.form.valid && this.form.enabled) {
+        this.apiRequestInProgress = true;
+        this.form.disable();
+        const form_value = this.form.value;
+        this.errorMessage = '';
 
-      let refrigerator_values = this.refrigerators.find(value => value.Modell == form_value.searchValueRefrigerator);
-      let freezer_values = this.freezers.find(value => value.Modell == form_value.searchValueFreezer);
-      let hot_plate_values = this.hot_plates.find(value => value.Modell == form_value.searchValueHot_plate);
-      let microwave_values = this.microwaves.find(value => value.Modell == form_value.searchValueMicrowave);
-      let dishwasher_values = this.dishwashers.find(value => value.Modell == form_value.searchValueDishwasher);
-      let dehumidifier_values = this.dehumidifiers.find(value => value.Modell == form_value.searchValueDehumidifier);
-      let oven_values = this.ovens.find(value => value.Modell == form_value.searchValueOven);
-      let washing_machine_values = this.washing_machines.find(value => value.Modell == form_value.searchValueWashing_machine);
-      let dryer_values = this.dryers.find(value => value.Modell == form_value.searchValueDryer);
+        let refrigerator_values = this.refrigerators.find(value => value.Modell == form_value.searchValueRefrigerator);
+        let freezer_values = this.freezers.find(value => value.Modell == form_value.searchValueFreezer);
+        let hot_plate_values = this.hot_plates.find(value => value.Modell == form_value.searchValueHot_plate);
+        let microwave_values = this.microwaves.find(value => value.Modell == form_value.searchValueMicrowave);
+        let dishwasher_values = this.dishwashers.find(value => value.Modell == form_value.searchValueDishwasher);
+        let dehumidifier_values = this.dehumidifiers.find(value => value.Modell == form_value.searchValueDehumidifier);
+        let oven_values = this.ovens.find(value => value.Modell == form_value.searchValueOven);
+        let washing_machine_values = this.washing_machines.find(value => value.Modell == form_value.searchValueWashing_machine);
+        let dryer_values = this.dryers.find(value => value.Modell == form_value.searchValueDryer);
 
-      console.log(refrigerator_values?.Fogyasztasnap);
-      console.log(freezer_values?.Fogyasztasnap);
-      console.log(hot_plate_values?.Fogyasztas);
-      console.log(microwave_values?.Fogyasztas);
-      console.log(dishwasher_values?.Fogyasztas_kWh_eco_program);
-      console.log(dehumidifier_values?.Fogyasztas);
-      console.log(oven_values?.Fogyasztas);
-      console.log(washing_machine_values?.Fogyasztas_eco_40_60_program);
-      console.log(dryer_values?.Fogyasztasnap);
+        console.log(refrigerator_values?.Fogyasztasnap);
+        console.log(freezer_values?.Fogyasztasnap);
+        console.log(hot_plate_values?.Fogyasztas);
+        console.log(microwave_values?.Fogyasztas);
+        console.log(dishwasher_values?.Fogyasztas_kWh_eco_program);
+        console.log(dehumidifier_values?.Fogyasztas);
+        console.log(oven_values?.Fogyasztas);
+        console.log(washing_machine_values?.Fogyasztas_eco_40_60_program);
+        console.log(dryer_values?.Fogyasztasnap);
 
-      let refrigerator_daily_consumption = refrigerator_values?.Fogyasztasnap;
-      let freezer_daily_consumption = freezer_values?.Fogyasztasnap;
-      let refrigerator_yearly_consumption = refrigerator_values?.Fogyasztasev;
-      let freezer_yearly_consumption = freezer_values?.Fogyasztasev;
-      let hot_plate_consumption = hot_plate_values?.Fogyasztas;
-      let microwave_consumption = microwave_values?.Fogyasztas;
-      let dishwasher_eco_program_consumption = dishwasher_values?.Fogyasztas_kWh_eco_program;
-      let dehumidifier_consumption = dehumidifier_values?.Fogyasztas;
-      let oven_consumption = oven_values?.Fogyasztas;
-      let washing_machine_eco_40_60_program_consumption = washing_machine_values?.Fogyasztas_eco_40_60_program;
-      let dryer_daily_consumption = dryer_values?.Fogyasztasnap;
-      let dryer_yearly_consumption = dryer_values?.Fogyasztasev;
+        let refrigerator_daily_consumption = refrigerator_values?.Fogyasztasnap;
+        let freezer_daily_consumption = freezer_values?.Fogyasztasnap;
+        let refrigerator_yearly_consumption = refrigerator_values?.Fogyasztasev;
+        let freezer_yearly_consumption = freezer_values?.Fogyasztasev;
+        let hot_plate_consumption = hot_plate_values?.Fogyasztas;
+        let microwave_consumption = microwave_values?.Fogyasztas;
+        let dishwasher_eco_program_consumption = dishwasher_values?.Fogyasztas_kWh_eco_program;
+        let dehumidifier_consumption = dehumidifier_values?.Fogyasztas;
+        let oven_consumption = oven_values?.Fogyasztas;
+        let washing_machine_eco_40_60_program_consumption = washing_machine_values?.Fogyasztas_eco_40_60_program;
+        let dryer_daily_consumption = dryer_values?.Fogyasztasnap;
+        let dryer_yearly_consumption = dryer_values?.Fogyasztasev;
 
-      let searchBarHot_plateMinutesInput = form_value.searchBarHot_plateMinutesInput!/60;
-      let searchBarMicrowaveMinutesInput = form_value.searchBarMicrowaveMinutesInput!/60;
-      let searchBarDishwasherEcoProgramCountInput = form_value.searchBarDishwasherEcoProgramCountInput;
-      let searchBarDehumidifierMinutesInput = form_value.searchBarDehumidifierMinutesInput!/60;
-      let searchBarOvenMinutesInput = form_value.searchBarOvenMinutesInput!/60;
-      let searchBarWashingMachineEcoProgram40_60CountInput = form_value.searchBarWashingMachineEcoProgram40_60CountInput;
+        let searchBarHot_plateMinutesInput = form_value.searchBarHot_plateMinutesInput!/60;
+        let searchBarMicrowaveMinutesInput = form_value.searchBarMicrowaveMinutesInput!/60;
+        let searchBarDishwasherEcoProgramCountInput = form_value.searchBarDishwasherEcoProgramCountInput;
+        let searchBarDehumidifierMinutesInput = form_value.searchBarDehumidifierMinutesInput!/60;
+        let searchBarOvenMinutesInput = form_value.searchBarOvenMinutesInput!/60;
+        let searchBarWashingMachineEcoProgram40_60CountInput = form_value.searchBarWashingMachineEcoProgram40_60CountInput;
 
-      console.log(form_value.searchBarHot_plateMinutesInput);
-      console.log(form_value.searchBarMicrowaveMinutesInput);
-      console.log(form_value.searchBarDishwasherEcoProgramCountInput);
-      console.log(form_value.searchBarDehumidifierMinutesInput);
-      console.log(form_value.searchBarOvenMinutesInput);
-      console.log(form_value.searchBarWashingMachineEcoProgram40_60CountInput);
+        console.log(form_value.searchBarHot_plateMinutesInput);
+        console.log(form_value.searchBarMicrowaveMinutesInput);
+        console.log(form_value.searchBarDishwasherEcoProgramCountInput);
+        console.log(form_value.searchBarDehumidifierMinutesInput);
+        console.log(form_value.searchBarOvenMinutesInput);
+        console.log(form_value.searchBarWashingMachineEcoProgram40_60CountInput);
 
-      let daily_power_consumption = refrigerator_daily_consumption! + freezer_daily_consumption! + dryer_daily_consumption! +
-        (searchBarHot_plateMinutesInput! * hot_plate_consumption!) + (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
-        (searchBarDishwasherEcoProgramCountInput! * dishwasher_eco_program_consumption!) +
-        (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) + (searchBarOvenMinutesInput! * oven_consumption!) +
-        (searchBarWashingMachineEcoProgram40_60CountInput! * washing_machine_eco_40_60_program_consumption!);
-
-      let monthly_power_consumption = daily_power_consumption * 30;
-
-      let yearly_power_consumption = ((searchBarHot_plateMinutesInput! * hot_plate_consumption!) +
-          (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
+        let daily_power_consumption = refrigerator_daily_consumption! + freezer_daily_consumption! + dryer_daily_consumption! +
+          (searchBarHot_plateMinutesInput! * hot_plate_consumption!) + (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
           (searchBarDishwasherEcoProgramCountInput! * dishwasher_eco_program_consumption!) +
           (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) + (searchBarOvenMinutesInput! * oven_consumption!) +
-          (searchBarWashingMachineEcoProgram40_60CountInput! * washing_machine_eco_40_60_program_consumption!)) * 365 +
-        (refrigerator_yearly_consumption! + freezer_yearly_consumption! + dryer_yearly_consumption!);
+          (searchBarWashingMachineEcoProgram40_60CountInput! * washing_machine_eco_40_60_program_consumption!);
 
-      this.power_consumption_daily = daily_power_consumption;
-      this.power_consumption_monthly = monthly_power_consumption;
-      this.power_consumption_yearly = yearly_power_consumption;
+        let monthly_power_consumption = daily_power_consumption * 30;
 
-      console.log(daily_power_consumption)
+        let yearly_power_consumption = ((searchBarHot_plateMinutesInput! * hot_plate_consumption!) +
+            (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
+            (searchBarDishwasherEcoProgramCountInput! * dishwasher_eco_program_consumption!) +
+            (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) + (searchBarOvenMinutesInput! * oven_consumption!) +
+            (searchBarWashingMachineEcoProgram40_60CountInput! * washing_machine_eco_40_60_program_consumption!)) * 365 +
+          (refrigerator_yearly_consumption! + freezer_yearly_consumption! + dryer_yearly_consumption!);
 
-      this.selected_refrigerator_y_c = refrigerator_yearly_consumption;
-      this.selected_freezer_y_c = freezer_yearly_consumption;
-      this.selected_hot_plate_c = hot_plate_consumption;
-      this.selected_oven_c = oven_consumption;
-      this.selected_dishwasher_ep_c = dishwasher_eco_program_consumption;
-      this.selected_washing_m_ep40_60_c = washing_machine_eco_40_60_program_consumption;
-      this.selected_dryer_y_c = dryer_yearly_consumption;
+        this.power_consumption_daily = daily_power_consumption;
+        this.power_consumption_monthly = monthly_power_consumption;
+        this.power_consumption_yearly = yearly_power_consumption;
 
-      this.showBeforeKalkulate=false;
-      this.showAfterKalkulate=true;
-      this.loading=true;
+        console.log(daily_power_consumption)
 
+        this.selected_refrigerator_y_c = refrigerator_yearly_consumption;
+        this.selected_freezer_y_c = freezer_yearly_consumption;
+        this.selected_hot_plate_c = hot_plate_consumption;
+        this.selected_oven_c = oven_consumption;
+        this.selected_dishwasher_ep_c = dishwasher_eco_program_consumption;
+        this.selected_washing_m_ep40_60_c = washing_machine_eco_40_60_program_consumption;
+        this.selected_dryer_y_c = dryer_yearly_consumption;
+
+        this.showBeforeKalkulate=false;
+        this.showAfterKalkulate=true;
+        this.loading=true;
+
+      }
+
+    } if (this.form.invalid && this.form.enabled) {
+      this.form.markAllAsTouched();
+      this.errorMessage = 'Válassza ki vagy töltse ba a háztartási gépeit!';
     }
-
   }
-
-
 
   public ngOnDestroy(): void {
     this.onDestroy$.next();
