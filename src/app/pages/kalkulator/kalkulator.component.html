@@ -34,6 +34,7 @@
               Márka: {{freezer.Marka}}
               Modell: {{freezer.Modell}}
               Energia o: {{freezer.Energiahatekonysagi_osztaly}}
+              Típus: {{freezer.Tipus}}
               Méret: {{freezer.Meret}} liter
             </mat-option>
           </mat-autocomplete>
@@ -88,6 +89,7 @@
               Márka: {{dishwasher.Marka}}
               Modell: {{dishwasher.Modell}}
               Típus: {{dishwasher.Tipus}}
+              Energiahatékonysági o: {{dishwasher.Energiahatekonysagi_osztaly}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -160,7 +162,8 @@
             <mat-option *ngFor="let dryer of filteredOptionsDryers | async" [value]="dryer.Modell">
               Márka: {{dryer.Marka}}
               Modell: {{dryer.Modell}}
-              Max töltetsúly: {{dryer.Max_toltetsuly}}kg <br>
+              Típus: {{dryer.Tipus}} <br>
+              Max töltetsúly: {{dryer.Max_toltetsuly}}kg
               Energiahatékonysági o: {{dryer.Energiahatekonysagi_osztaly}}
             </mat-option>
           </mat-autocomplete>
@@ -187,6 +190,7 @@
                 Márka: {{freezer.Marka}}
                 Modell: {{freezer.Modell}}
                 Méret: {{freezer.Meret}} liter <br>
+                Típus: {{freezer.Tipus}}
                 Éves fogyasztás: {{freezer.Fogyasztasev}} kWh
               </mat-option>
             </mat-select>
@@ -244,6 +248,7 @@
               <mat-option *ngFor="let dryer of dryers_w_lower_consumption" [value]="dryer" >
                 Márka: {{dryer.Marka}}
                 Modell: {{dryer.Modell}}
+                Típus: {{dryer.Tipus}}
                 Éves fogyasztás: {{dryer.Fogyasztasev}} kWh
               </mat-option>
             </mat-select>

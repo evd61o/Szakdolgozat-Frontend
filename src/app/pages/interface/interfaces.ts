@@ -10,6 +10,7 @@ export interface Refrigerator {
 export interface Freezer {
   Marka?: string;
   Modell?: string;
+  Tipus?: string;
   Meret?: number;
   Energiahatekonysagi_osztaly?: string;
   Fogyasztasev?: number;
@@ -33,6 +34,7 @@ export interface Dishwasher {
   Marka?: string;
   Modell?: string;
   Tipus?: string;
+  Energiahatekonysagi_osztaly?: string;
   Fogyasztas_kWh_eco_program?: number;
 }
 export interface Dehumidifier {
@@ -63,6 +65,7 @@ export interface Washing_machine {
 export interface Dryer {
   Marka?: string;
   Modell?: string;
+  Tipus?: string;
   Energiahatekonysagi_osztaly?: string;
   Max_toltetsuly?: number;
   Fogyasztasev?: number;

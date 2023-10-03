@@ -16,7 +16,7 @@ import {
   providedIn: 'root'
 })
 export class ApiService {
-  protected basePath = 'http://localhost:3000';
+  protected basePath = 'http://192.168.1.225:3000';
 
   constructor(protected httpClient: HttpClient) {
   }
