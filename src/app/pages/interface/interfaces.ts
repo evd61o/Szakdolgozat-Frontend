@@ -47,7 +47,8 @@ export interface Oven {
   Modell?: string;
   Energiahatekonysagi_osztaly?: string;
   Teljesitmeny?: number;
-  Fogyasztas?: number;
+  Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos?: number;
+  Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses?: number;
 }
 export interface Washing_machine {
   Marka?: string;

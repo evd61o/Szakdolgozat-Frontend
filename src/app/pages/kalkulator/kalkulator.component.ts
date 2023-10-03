@@ -22,6 +22,7 @@ import {LoginService} from "../../shared/api/login.service";
 
 })
 export class KalkulatorComponent implements OnInit, OnDestroy {
+  isChecked: boolean = false;
   public apiRequestInProgress: boolean = false;
   showBeforeKalkulate:boolean = true;
   showAfterKalkulate:boolean = false;
@@ -48,7 +49,8 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
   public dehumidifiers! : Dehumidifier[];
   public mindehumidifier!: Dehumidifier[];
   public ovens! : Oven[];
-  public minoven!: Oven[];
+  public minoventraditional!: Oven[];
+  public minovenairmixing!: Oven[];
   public ovens_w_lower_consumption! : Oven[];
   public washing_machines! :Washing_machine[];
   public minwashing_machine!: Washing_machine[];
@@ -72,11 +74,17 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
   public power_consumption_monthly!: number;
   public power_consumption_yearly!: number;
 
+  public power_consumption_daily_price!: number;
+  public power_consumption_monthly_price!: number;
+  public power_consumption_yearly_price!: number;
+
+
   public selected_refrigerator_y_c!: number | undefined;
   public selected_freezer_y_c!: number | undefined;
   public selected_dishwasher_ep_c!: number | undefined;
   public selected_hot_plate_c!: number | undefined;
-  public selected_oven_c!: number | undefined;
+  public selected_oven_c_traditional!: number | undefined;
+  public selected_oven_c_airmixing!: number | undefined;
   public selected_washing_m_ep40_60_c!: number | undefined;
   public selected_dryer_y_c!: number | undefined;
 
@@ -95,7 +103,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     searchBarMicrowaveMinutesInput: 0,
     searchBarDishwasherEcoProgramCountInput: 0,
     searchBarDehumidifierMinutesInput: 0,
-    searchBarOvenMinutesInput: 0,
+    searchBarOvenCicleCountInput: 0,
     searchBarWashingMachineEcoProgram40_60CountInput: 0,
     submitType: ''
   });
@@ -219,7 +227,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     this.form.get('searchValueOven')!.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(modell => {
       const freezersData = this.ovens.find(value => value.Modell === modell);
       if (freezersData){
-        this.apiService.getSearchedOvensFromApi$(freezersData.Fogyasztas!)
+        this.apiService.getSearchedOvensFromApi$(freezersData.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos!, freezersData.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses!)
           .pipe(first())
           .subscribe((ovens_w_lower_consumption) => {
             this.ovens_w_lower_consumption = ovens_w_lower_consumption;
@@ -293,8 +301,12 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
       this.mindehumidifier = mindehumidifier;
     });
 
-    this.apiService.getMinOvenFromApi$().subscribe((minoven) => {
-      this.minoven = minoven;
+    this.apiService.getMinOvenTraditionalFromApi$().subscribe((minoventraditional) => {
+      this.minoventraditional = minoventraditional;
+    });
+
+    this.apiService.getMinOvenAirMixingFromApi$().subscribe((minovenairmixing) => {
+      this.minovenairmixing = minovenairmixing;
     });
 
     this.apiService.getMinWashing_MachineFromApi$().subscribe((minwashing_machine) => {
@@ -360,7 +372,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         console.log(microwave_values?.Fogyasztas);
         console.log(dishwasher_values?.Fogyasztas_kWh_eco_program);
         console.log(dehumidifier_values?.Fogyasztas);
-        console.log(oven_values?.Fogyasztas);
+        console.log(oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos);
         console.log(washing_machine_values?.Fogyasztas_eco_40_60_program);
         console.log(dryer_values?.Fogyasztasnap);
 
@@ -372,7 +384,8 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         let microwave_consumption = microwave_values?.Fogyasztas;
         let dishwasher_eco_program_consumption = dishwasher_values?.Fogyasztas_kWh_eco_program;
         let dehumidifier_consumption = dehumidifier_values?.Fogyasztas;
-        let oven_consumption = oven_values?.Fogyasztas;
+        let oven_consumption_traditional = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos;
+        let oven_consumption_airmixing = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses;
         let washing_machine_eco_40_60_program_consumption = washing_machine_values?.Fogyasztas_eco_40_60_program;
         let dryer_daily_consumption = dryer_values?.Fogyasztasnap;
         let dryer_yearly_consumption = dryer_values?.Fogyasztasev;
@@ -381,20 +394,20 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         let searchBarMicrowaveMinutesInput = form_value.searchBarMicrowaveMinutesInput!/60;
         let searchBarDishwasherEcoProgramCountInput = form_value.searchBarDishwasherEcoProgramCountInput;
         let searchBarDehumidifierMinutesInput = form_value.searchBarDehumidifierMinutesInput!/60;
-        let searchBarOvenMinutesInput = form_value.searchBarOvenMinutesInput!/60;
         let searchBarWashingMachineEcoProgram40_60CountInput = form_value.searchBarWashingMachineEcoProgram40_60CountInput;
+        let searchBarOvenCicleCountInput = form_value.searchBarOvenCicleCountInput;
 
         console.log(form_value.searchBarHot_plateMinutesInput);
         console.log(form_value.searchBarMicrowaveMinutesInput);
         console.log(form_value.searchBarDishwasherEcoProgramCountInput);
         console.log(form_value.searchBarDehumidifierMinutesInput);
-        console.log(form_value.searchBarOvenMinutesInput);
+        console.log(form_value.searchBarOvenCicleCountInput);
         console.log(form_value.searchBarWashingMachineEcoProgram40_60CountInput);
 
         let daily_power_consumption = refrigerator_daily_consumption! + freezer_daily_consumption! + dryer_daily_consumption! +
           (searchBarHot_plateMinutesInput! * hot_plate_consumption!) + (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
           (searchBarDishwasherEcoProgramCountInput! * dishwasher_eco_program_consumption!) +
-          (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) + (searchBarOvenMinutesInput! * oven_consumption!) +
+          (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) + (searchBarOvenCicleCountInput! * oven_consumption_traditional!) +
           (searchBarWashingMachineEcoProgram40_60CountInput! * washing_machine_eco_40_60_program_consumption!);
 
         let monthly_power_consumption = daily_power_consumption * 30;
@@ -402,7 +415,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         let yearly_power_consumption = ((searchBarHot_plateMinutesInput! * hot_plate_consumption!) +
             (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
             (searchBarDishwasherEcoProgramCountInput! * dishwasher_eco_program_consumption!) +
-            (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) + (searchBarOvenMinutesInput! * oven_consumption!) +
+            (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) + (searchBarOvenCicleCountInput! * oven_consumption_traditional!) +
             (searchBarWashingMachineEcoProgram40_60CountInput! * washing_machine_eco_40_60_program_consumption!)) * 365 +
           (refrigerator_yearly_consumption! + freezer_yearly_consumption! + dryer_yearly_consumption!);
 
@@ -410,12 +423,24 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         this.power_consumption_monthly = monthly_power_consumption;
         this.power_consumption_yearly = yearly_power_consumption;
 
+
+        this.power_consumption_daily_price = daily_power_consumption * 35.293;
+        this.power_consumption_monthly_price = monthly_power_consumption * 35.293;
+        this.power_consumption_yearly_price = yearly_power_consumption;
+
+        if (this.power_consumption_yearly_price > 2523) {
+          this.power_consumption_yearly_price = (this.power_consumption_yearly_price - 2523) * 70.104 + (2523 * 35.293);
+        } else {
+          this.power_consumption_yearly_price = this.power_consumption_yearly_price * 35.293;
+        }
+
         console.log(daily_power_consumption)
 
         this.selected_refrigerator_y_c = refrigerator_yearly_consumption;
         this.selected_freezer_y_c = freezer_yearly_consumption;
         this.selected_hot_plate_c = hot_plate_consumption;
-        this.selected_oven_c = oven_consumption;
+        this.selected_oven_c_traditional = oven_consumption_traditional;
+        this.selected_oven_c_airmixing = oven_consumption_airmixing;
         this.selected_dishwasher_ep_c = dishwasher_eco_program_consumption;
         this.selected_washing_m_ep40_60_c = washing_machine_eco_40_60_program_consumption;
         this.selected_dryer_y_c = dryer_yearly_consumption;

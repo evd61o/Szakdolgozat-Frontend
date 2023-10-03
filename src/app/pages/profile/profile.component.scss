@@ -5,7 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 130vh;
+  min-height: calc(100vh - 98px);
+  height:auto;
 }
 
 .content {
@@ -15,6 +16,11 @@
   justify-content: center;
   mat-form-field{
     width: 500px;
+    @media only screen
+    and (min-device-width : 275px)
+    and (max-device-width : 320px) {
+      width: 275px;
+    }
     @media only screen
     and (min-device-width : 320px)
     and (max-device-width : 480px) {

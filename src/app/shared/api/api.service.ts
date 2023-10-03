@@ -69,8 +69,8 @@ export class ApiService {
     return this.httpClient.get<Oven[]>(`${this.basePath}/sutok`);
   }
 
-  public getSearchedOvensFromApi$(selected_oven_c: number): Observable<Oven[]> {
-    return this.httpClient.get<Oven[]>(`${this.basePath}/sutok/${selected_oven_c}`);
+  public getSearchedOvensFromApi$(selected_oven_c_traditional: number, selected_oven_c_airmixing: number): Observable<Oven[]> {
+    return this.httpClient.get<Oven[]>(`${this.basePath}/sutok/${selected_oven_c_traditional}/${selected_oven_c_airmixing}`);
   }
 
   public getWashing_machinesFromApi$(): Observable<Washing_machine[]> {
@@ -113,8 +113,12 @@ export class ApiService {
     return this.httpClient.get<Dehumidifier[]>(`${this.basePath}/paraelszivok/min`);
   }
 
-  public getMinOvenFromApi$(): Observable<Oven[]> {
-    return this.httpClient.get<Oven[]>(`${this.basePath}/sutok/min`);
+  public getMinOvenTraditionalFromApi$(): Observable<Oven[]> {
+    return this.httpClient.get<Oven[]>(`${this.basePath}/sutok/minhagyomanyos`);
+  }
+
+  public getMinOvenAirMixingFromApi$(): Observable<Oven[]> {
+    return this.httpClient.get<Oven[]>(`${this.basePath}/sutok/minlegkevereses`);
   }
 
   public getMinWashing_MachineFromApi$(): Observable<Washing_machine[]> {

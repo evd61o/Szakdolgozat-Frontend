@@ -221,7 +221,8 @@
               <mat-option *ngFor="let oven of ovens_w_lower_consumption" [value]="oven" >
                 Márka: {{oven.Marka}}
                 Modell: {{oven.Modell}}
-                Fogyasztás: {{oven.Fogyasztas}} kWh
+                Fogyasztás (hagyományos üzemmód): {{oven.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos}} kWh/ciklus
+                Fogyasztás (légkeveréses üzemmód): {{oven.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses}} kWh/ciklus
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -282,11 +283,11 @@
                    formControlName="searchBarDehumidifierMinutesInput">
           </div>
           <div>
-            A sütőjét hány percet használja egy nap?
+            A sütőjét hányszor használja egy nap (hagyományos mód)?
             <input type="number"
                    min="0"
-                   max="1000"
-                   formControlName="searchBarOvenMinutesInput">
+                   max="100"
+                   formControlName="searchBarOvenCicleCountInput">
           </div>
           <div>
             A mosógépén hány eco 40-60 programot használ egy nap?
@@ -321,8 +322,11 @@
           <p *ngFor="let paraelszivo of mindehumidifier">
             Páraelszívó: {{paraelszivo.Marka}} {{paraelszivo.Modell}} {{paraelszivo.Fogyasztas}} kWh
           </p>
-          <p *ngFor="let suto of minoven">
-            Sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Fogyasztas}} kWh
+          <p *ngFor="let suto of minoventraditional">
+            Sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos}} kWh/cilus (hagyományos üzemmód)
+          </p>
+          <p *ngFor="let suto of minovenairmixing">
+            Sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses}} kWh/cilus (légkeveréses üzemmód)
           </p>
           <p *ngFor="let mosogep of minwashing_machine">
             Mosógép: {{mosogep.Marka}} {{mosogep.Modell}} {{mosogep.Fogyasztas_eco_40_60_program}} kWh/eco 40-60 program
@@ -333,13 +337,13 @@
         </div>
         <div class="results"  *ngIf="showAfterKalkulate">
           <p>
-            Napi áramfogyasztás: {{power_consumption_daily}} kWh
+            Napi áramfogyasztás: {{power_consumption_daily}} kWh, ára: {{power_consumption_daily_price}} Ft
           </p>
           <p>
-            Havi áramfogyasztás: {{power_consumption_monthly}} kWh
+            Havi áramfogyasztás: {{power_consumption_monthly}} kWh, ára: {{power_consumption_monthly_price}} Ft
           </p>
           <p>
-            Évi áramfogyasztás: {{power_consumption_yearly}} kWh
+            Évi áramfogyasztás: {{power_consumption_yearly}} kWh, ára: {{power_consumption_yearly_price}} Ft
           </p>
           <p>
             Kiválasztott hűtő éves fogyasztása: {{selected_refrigerator_y_c}} kWh
@@ -354,7 +358,10 @@
             Kiválasztott főzőlap fogyasztása: {{selected_hot_plate_c}} kWh
           </p>
           <p>
-            Kiválasztott sütő fogyasztása: {{selected_oven_c}} kWh
+            Kiválasztott sütő fogyasztása: {{selected_oven_c_traditional}} kWh/ckilus (hagyományos üzemmód)
+          </p>
+          <p>
+            Kiválasztott sütő fogyasztása: {{selected_oven_c_airmixing}} kWh/ckilus (légkeveréses üzemmód)
           </p>
           <p>
             Kiválasztott mosogatógép fogyasztása 1 eco program alatt: {{selected_dishwasher_ep_c}} kWh
