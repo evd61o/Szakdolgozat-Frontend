@@ -3,15 +3,15 @@
     <div class="content">
       <div class="searchBar">
         <h1>KALKULÁTOR</h1>
-        <mat-form-field>
-          <mat-label>Valassza ki a hűtőjét:</mat-label>
+        <mat-form-field >
+          <mat-label>{{ filteredOptionsRefrigerators ? 'Válassza ki a hűtőjét' : 'Hűtők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
                  matInput
                  formControlName="searchValueRefrigerator"
                  [matAutocomplete]="auto1">
-          <mat-autocomplete #auto1="matAutocomplete">
+          <mat-autocomplete #auto1="matAutocomplete" >
             <mat-option *ngFor="let refrigerator of filteredOptionsRefrigerators | async" [value]="refrigerator.Modell">
               Márka: {{refrigerator.Marka}}
               Modell: {{refrigerator.Modell}}
@@ -22,7 +22,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Valassza ki a fagyasztóját:</mat-label>
+          <mat-label>{{ filteredOptionsFreezers ? 'Válassza ki a fagyasztóját' : 'Fagyasztók betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
@@ -41,7 +41,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Valassza ki a főzőlapját:</mat-label>
+          <mat-label>{{ filteredOptionsHot_plates ? 'Válassza ki a főzőlapját' : 'Főzőlapok betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
@@ -59,7 +59,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Valassza ki a mikrohullámú sütőjét:</mat-label>
+          <mat-label>{{ filteredOptionsMicrowaves ? 'Válassza ki a mikrohullámú sütőjét' : 'Mikrohullámú sütők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
@@ -77,7 +77,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Valassza ki a mosogatógépét:</mat-label>
+          <mat-label>{{ filteredOptionsDishwashers ? 'Válassza ki a mosogatógépét' : 'Mosogatógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
@@ -95,7 +95,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Valassza ki a páraelszívóját</mat-label>
+          <mat-label>{{ filteredOptionsDehumidifiers ? 'Válassza ki a páraelszívóját' : 'Páraelszívók betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
@@ -113,7 +113,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Valassza ki a sütőjét</mat-label>
+          <mat-label>{{ filteredOptionsOvens ? 'Válassza ki a sütőjét' : 'Sütők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
@@ -131,7 +131,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Valassza ki a mosógépét</mat-label>
+          <mat-label>{{ filteredOptionsWashing_machines ? 'Válassza ki a mosógépét' : 'Mosógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
@@ -151,7 +151,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Valassza ki a szárítógépét</mat-label>
+          <mat-label>{{ filteredOptionsDryers ? 'Válassza ki a szárítógépét' : 'Szárítógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
                  aria-label="String"
@@ -309,36 +309,43 @@
         <p class="errorMessage">{{errorMessage}}</p>
         <div class="recommendation" *ngIf="showBeforeKalkulate">
           <h1>Ajánlás, jelenleg ezek a legkevesebb vilamosenergiát fogyasztó háztartási gépek:</h1>
-          <p *ngFor="let huto of minrefrigerator" >
-            Hűtő: {{huto.Marka}} {{huto.Modell}} {{huto.Fogyasztasev}} kWh/év
-          </p>
-          <p *ngFor="let fagyaszto of minfreezer">
-            Fagyasztó: {{fagyaszto.Marka}} {{fagyaszto.Modell}} {{fagyaszto.Fogyasztasev}} kWh/év
-          </p>
-          <p *ngFor="let fozolap of minhot_plate">
-            Főzőlap: {{fozolap.Marka}} {{fozolap.Modell}} {{fozolap.Fogyasztas}} kWh
-          </p>
-          <p *ngFor="let mikrohullamu_suto of minmicrowave">
-            Mikrohullámú sütő: {{mikrohullamu_suto.Marka}} {{mikrohullamu_suto.Modell}} {{mikrohullamu_suto.Fogyasztas}} kWh
-          </p>
-          <p *ngFor="let mosogatogep of mindishwasher">
-            Mosogatógép: {{mosogatogep.Marka}} {{mosogatogep.Modell}} {{mosogatogep.Fogyasztas_kWh_eco_program}} kWh/eco program
-          </p>
-          <p *ngFor="let paraelszivo of mindehumidifier">
-            Páraelszívó: {{paraelszivo.Marka}} {{paraelszivo.Modell}} {{paraelszivo.Fogyasztas}} kWh
-          </p>
-          <p *ngFor="let suto of minoventraditional">
-            Sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos}} kWh/cilus (hagyományos üzemmód)
-          </p>
-          <p *ngFor="let suto of minovenairmixing">
-            Sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses}} kWh/cilus (légkeveréses üzemmód)
-          </p>
-          <p *ngFor="let mosogep of minwashing_machine">
-            Mosógép: {{mosogep.Marka}} {{mosogep.Modell}} {{mosogep.Fogyasztas_eco_40_60_program}} kWh/eco 40-60 program
-          </p>
-          <p *ngFor="let szaritogep of mindryer">
-            Szárítógép: {{szaritogep.Marka}} {{szaritogep.Modell}} {{szaritogep.Fogyasztasev}} kWh/év
-          </p>
+          <!-- Betöltési felirat -->
+          <div *ngIf="!minrefrigerator || !minfreezer || !minhot_plate || !minmicrowave || !mindishwasher || !mindehumidifier || !minoventraditional || !minovenairmixing || !minwashing_machine || !mindryer">
+            <p>Betöltés...</p>
+          </div>
+          <!-- Ha az adatok elérhetők, akkor megjelenítjük őket -->
+          <ng-container *ngIf="minrefrigerator && minfreezer && minhot_plate && minmicrowave && mindishwasher && mindehumidifier && minoventraditional && minovenairmixing && minwashing_machine && mindryer">
+            <p *ngFor="let huto of minrefrigerator" >
+              Hűtő: {{huto.Marka}} {{huto.Modell}} {{huto.Fogyasztasev}} kWh/év
+            </p>
+            <p *ngFor="let fagyaszto of minfreezer">
+              Fagyasztó: {{fagyaszto.Marka}} {{fagyaszto.Modell}} {{fagyaszto.Fogyasztasev}} kWh/év
+            </p>
+            <p *ngFor="let fozolap of minhot_plate">
+              Főzőlap: {{fozolap.Marka}} {{fozolap.Modell}} {{fozolap.Fogyasztas}} kWh
+            </p>
+            <p *ngFor="let mikrohullamu_suto of minmicrowave">
+              Mikrohullámú sütő: {{mikrohullamu_suto.Marka}} {{mikrohullamu_suto.Modell}} {{mikrohullamu_suto.Fogyasztas}} kWh
+            </p>
+            <p *ngFor="let mosogatogep of mindishwasher">
+              Mosogatógép: {{mosogatogep.Marka}} {{mosogatogep.Modell}} {{mosogatogep.Fogyasztas_kWh_eco_program}} kWh/eco program
+            </p>
+            <p *ngFor="let paraelszivo of mindehumidifier">
+              Páraelszívó: {{paraelszivo.Marka}} {{paraelszivo.Modell}} {{paraelszivo.Fogyasztas}} kWh
+            </p>
+            <p *ngFor="let suto of minoventraditional">
+              Sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos}} kWh/cilus (hagyományos üzemmód)
+            </p>
+            <p *ngFor="let suto of minovenairmixing">
+              Sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses}} kWh/cilus (légkeveréses üzemmód)
+            </p>
+            <p *ngFor="let mosogep of minwashing_machine">
+              Mosógép: {{mosogep.Marka}} {{mosogep.Modell}} {{mosogep.Fogyasztas_eco_40_60_program}} kWh/eco 40-60 program
+            </p>
+            <p *ngFor="let szaritogep of mindryer">
+              Szárítógép: {{szaritogep.Marka}} {{szaritogep.Modell}} {{szaritogep.Fogyasztasev}} kWh/év
+            </p>
+          </ng-container>
         </div>
         <div class="results"  *ngIf="showAfterKalkulate">
           <p>

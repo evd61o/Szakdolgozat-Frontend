@@ -22,7 +22,7 @@ import {LoginService} from "../../shared/api/login.service";
 
 })
 export class KalkulatorComponent implements OnInit, OnDestroy {
-  isChecked: boolean = false;
+
   public apiRequestInProgress: boolean = false;
   showBeforeKalkulate:boolean = true;
   showAfterKalkulate:boolean = false;
