@@ -16,7 +16,7 @@ import {
   providedIn: 'root'
 })
 export class ApiService {
-  protected basePath = 'http://192.168.1.225:3000';
+  protected basePath = 'https://rose-hulking-fireplace.glitch.me';
 
   constructor(protected httpClient: HttpClient) {
   }
