@@ -419,20 +419,20 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
             (searchBarWashingMachineEcoProgram40_60CountInput! * washing_machine_eco_40_60_program_consumption!)) * 365 +
           (refrigerator_yearly_consumption! + freezer_yearly_consumption! + dryer_yearly_consumption!);
 
-        this.power_consumption_daily = daily_power_consumption;
-        this.power_consumption_monthly = monthly_power_consumption;
-        this.power_consumption_yearly = yearly_power_consumption;
+        this.power_consumption_daily = Math.round(daily_power_consumption * 100) / 100;
+        this.power_consumption_monthly = Math.round(monthly_power_consumption * 100) / 100;
+        this.power_consumption_yearly =  Math.round(yearly_power_consumption * 100) / 100;
 
-
-        this.power_consumption_daily_price = daily_power_consumption * 35.293;
-        this.power_consumption_monthly_price = monthly_power_consumption * 35.293;
+        this.power_consumption_daily_price = +(daily_power_consumption * 35.293).toFixed(2);
+        this.power_consumption_monthly_price = +(monthly_power_consumption * 35.293).toFixed(2);
         this.power_consumption_yearly_price = yearly_power_consumption;
 
         if (this.power_consumption_yearly_price > 2523) {
-          this.power_consumption_yearly_price = (this.power_consumption_yearly_price - 2523) * 70.104 + (2523 * 35.293);
+          this.power_consumption_yearly_price = +((this.power_consumption_yearly_price - 2523) * 70.104 + (2523 * 35.293)).toFixed(2);
         } else {
-          this.power_consumption_yearly_price = this.power_consumption_yearly_price * 35.293;
+          this.power_consumption_yearly_price = +(this.power_consumption_yearly_price * 35.293).toFixed(2);
         }
+
 
         console.log(daily_power_consumption)
 
@@ -453,7 +453,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
 
     } if (this.form.invalid && this.form.enabled) {
       this.form.markAllAsTouched();
-      this.errorMessage = 'Válassza ki vagy töltse ba a háztartási gépeit!';
+      this.errorMessage = 'Válassza ki vagy töltse be a háztartási gépeit!';
     }
   }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire/compat';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,7 +55,16 @@ import { LogoutComponent } from './pages/logout/logout.component';
         MatSelectModule,
         MatAutocompleteModule,
         MatCardModule,
-        FormsModule
+        FormsModule,
+        AngularFireModule.initializeApp({
+          apiKey: "AIzaSyCyxaikyhw05Kk_qwcKkhSPd9sbxH_-JII",
+          authDomain: "szakdolgozat-a8381.firebaseapp.com",
+          projectId: "szakdolgozat-a8381",
+          storageBucket: "szakdolgozat-a8381.appspot.com",
+          messagingSenderId: "781668655622",
+          appId: "1:781668655622:web:030258d653d84db637d987"
+
+      }),
     ],
   providers: [ApiService],
   bootstrap: [AppComponent]

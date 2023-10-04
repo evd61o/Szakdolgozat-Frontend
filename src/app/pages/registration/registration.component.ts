@@ -27,28 +27,41 @@ export class RegistrationComponent {
   }
 
   onSubmit() {
+    if (this.form.invalid && this.form.enabled){
+      this.errorMessage = "Töltsd az összes mezőt.\nA jelszó hossza minimum 8 karakter.";
+    }
     if (this.form.valid && this.form.enabled) {
       this.apiRequestInProgress = true;
       this.form.disable();
-      this.apiService.register$(this.form.value).subscribe(response => {
-        console.log('Sikeres Regisztráció!', response);
-        this.router.navigate(['/bejelentkezes']);
+      const password = this.form.value.password;
+      const confirmPassword = this.form.value.confirmPassword;
+      if (password !== confirmPassword) {
+        this.errorMessage = "A két jelszó nem egyezik!";
         this.apiRequestInProgress = false;
         this.form.enable();
-      }, error => {
-        console.error('Regisztráció sikertelen!', error);
-        this.show = true;
-        if (error.status == 409){
+      } else {
+
+        this.apiService.register$(this.form.value).subscribe(response => {
+          console.log('Sikeres Regisztráció!', response);
+          this.router.navigate(['/bejelentkezes']);
+          this.apiRequestInProgress = false;
+          this.form.enable();
+        }, error => {
+          console.error('Regisztráció sikertelen!', error);
           this.show = true;
-          this.errorMessage = "Ez a felhasználónév már foglalt!";
-        }
-        if (error.status == 410){
-          this.show = true;
-          this.errorMessage = "Az e-mail címmel már létezik felhasználó!";
-        }
-        this.apiRequestInProgress = false;
-        this.form.enable();
-      });
+          if (error.status == 409){
+            this.show = true;
+            this.errorMessage = "Ez a felhasználónév már foglalt!";
+          }
+          if (error.status == 410){
+            this.show = true;
+            this.errorMessage = "Az e-mail címmel már létezik felhasználó!";
+          }
+          this.apiRequestInProgress = false;
+          this.form.enable();
+        });
+
+      }
     }
     if (this.form.invalid && this.form.enabled) {
       this.form.markAllAsTouched();
