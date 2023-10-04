@@ -16,7 +16,7 @@ import {
   providedIn: 'root'
 })
 export class ApiService {
-  protected basePath = 'https://breakable-ray-sari.cyclic.cloud';
+  protected basePath = 'https://rose-hulking-fireplace.glitch.me';
 
   constructor(protected httpClient: HttpClient) {
   }
