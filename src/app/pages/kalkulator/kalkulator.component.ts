@@ -350,6 +350,11 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     }
     if (this.submitType === 'szamolas'){
 
+      if (this.form.invalid && this.form.enabled) {
+        this.form.markAllAsTouched();
+        this.errorMessage = 'Válassza ki vagy töltse be a háztartási gépeit!';
+      }
+
       if (this.form.valid && this.form.enabled) {
         this.apiRequestInProgress = true;
         this.form.disable();
@@ -456,10 +461,6 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
       window.location.reload();
     }
 
-    if (this.form.invalid && this.form.enabled) {
-      this.form.markAllAsTouched();
-      this.errorMessage = 'Válassza ki vagy töltse be a háztartási gépeit!';
-    }
   }
 
   public ngOnDestroy(): void {
