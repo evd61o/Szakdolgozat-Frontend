@@ -10,7 +10,7 @@
           <input type="password" formControlName="password"  name="password" class="form-control" placeholder="Jelszó:">
         </div>
 
-        <button mat-raised-button>Bejelentkezés</button>
+        <button mat-raised-button type="submit">{{apiRequestInProgress ? "Betöltés..." : "Bejelentkezés"}}</button>
         <div *ngIf="errorMessage" class="errormessage">
           {{errorMessage}}
         </div>

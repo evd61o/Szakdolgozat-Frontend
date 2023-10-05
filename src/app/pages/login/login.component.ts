@@ -42,6 +42,7 @@ export class LoginComponent {
           if (error.status === 401) {
             // Sikertelen bejelentkezés, jeleníts meg egy hibaüzenetet
             this.form.enable();
+            this.apiRequestInProgress = false;
             this.errorMessage = 'Hibás e-mail cím vagy jelszó';
           } else {
             // Egyéb hiba, kezeld aszerint

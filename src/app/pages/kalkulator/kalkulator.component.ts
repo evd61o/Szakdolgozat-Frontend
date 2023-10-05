@@ -451,7 +451,12 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
 
       }
 
-    } if (this.form.invalid && this.form.enabled) {
+    }
+    if (this.submitType === 'ujratoltes') {
+      window.location.reload();
+    }
+
+    if (this.form.invalid && this.form.enabled) {
       this.form.markAllAsTouched();
       this.errorMessage = 'Válassza ki vagy töltse be a háztartási gépeit!';
     }

@@ -16,7 +16,7 @@
           <input type="password" formControlName="confirmPassword" name="password" class="form-control" placeholder="Jelszó újra:">
         </div>
 
-        <button mat-raised-button type="submit" >{{apiRequestInProgress ? "Töltés" : "Regisztráció"}}</button>
+        <button mat-raised-button type="submit" >{{apiRequestInProgress ? "Betöltés..." : "Regisztráció"}}</button>
         <div class="registrationerror">
         <span *ngIf="show" >Sikertelen regisztráció!<br/></span>
         <span *ngIf="errorMessage" >{{errorMessage}}</span>

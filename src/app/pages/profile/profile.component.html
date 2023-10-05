@@ -3,26 +3,30 @@
     <div class="content">
       <h1>Üdvözöllek: {{userEmail}}</h1>
       <h2>Saját háztartási gépeim</h2>
-      <mat-form-field>
-        <mat-label>Valassza ki a hűtőjét:</mat-label>
+      <h1>KALKULÁTOR</h1>
+      <mat-form-field >
+        <mat-label>{{ filteredOptionsRefrigerators ? 'Válassza ki a hűtőjét' : 'Hűtők betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
                matInput
                formControlName="searchValueRefrigerator"
                [matAutocomplete]="auto1">
-        <mat-autocomplete #auto1="matAutocomplete">
+        <mat-autocomplete #auto1="matAutocomplete" >
           <mat-option *ngFor="let refrigerator of filteredOptionsRefrigerators | async" [value]="refrigerator.Modell">
-            Márka: {{refrigerator.Marka}}
-            Modell: {{refrigerator.Modell}}
-            Típus: {{refrigerator.Tipus}} <br>
-            Méret (liter): {{refrigerator.Meret}}
+            <div class="option-content">
+              <p>Márka: {{refrigerator.Marka}}</p>
+              <p>Modell: {{refrigerator.Modell}}</p>
+              <p>Típus: {{refrigerator.Tipus}}</p>
+              <p>Energiahatékonysági osztály: {{refrigerator.Energiahatekonysagi_osztaly}}</p>
+              <p>Méret: {{refrigerator.Meret}} liter</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Valassza ki a fagyasztóját:</mat-label>
+        <mat-label>{{ filteredOptionsFreezers ? 'Válassza ki a fagyasztóját' : 'Fagyasztók betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
@@ -31,16 +35,19 @@
                [matAutocomplete]="auto2">
         <mat-autocomplete #auto2="matAutocomplete">
           <mat-option *ngFor="let freezer of filteredOptionsFreezers | async" [value]="freezer.Modell">
-            Márka: {{freezer.Marka}}
-            Modell: {{freezer.Modell}}
-            Energia o: {{freezer.Energiahatekonysagi_osztaly}}
-            Méret (liter): {{freezer.Meret}}
+            <div class="option-content">
+              <p>Márka: {{freezer.Marka}}</p>
+              <p>Modell: {{freezer.Modell}}</p>
+              <p>Energiahatékonysági osztály: {{freezer.Energiahatekonysagi_osztaly}}</p>
+              <p>Típus: {{freezer.Tipus}}</p>
+              <p>Méret: {{freezer.Meret}} liter</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Valassza ki a főzőlapját:</mat-label>
+        <mat-label>{{ filteredOptionsHot_plates ? 'Válassza ki a főzőlapját' : 'Főzőlapok betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
@@ -49,16 +56,18 @@
                [matAutocomplete]="auto3">
         <mat-autocomplete #auto3="matAutocomplete">
           <mat-option *ngFor="let hot_plate of filteredOptionsHot_plates | async" [value]="hot_plate.Modell">
-            Márka: {{hot_plate.Marka}}
-            Modell: {{hot_plate.Modell}}
-            Típus: {{hot_plate.Tipus}}
-            Teljesítmény (W): {{hot_plate.Teljesitmeny}}
+            <div class="option-content">
+              <p>Márka: {{hot_plate.Marka}}</p>
+              <p>Modell: {{hot_plate.Modell}}</p>
+              <p>Típus: {{hot_plate.Tipus}}</p>
+              <p>Teljesítmény: {{hot_plate.Teljesitmeny}} W</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Valassza ki a mikrohullámú sütőjét:</mat-label>
+        <mat-label>{{ filteredOptionsMicrowaves ? 'Válassza ki a mikrohullámú sütőjét' : 'Mikrohullámú sütők betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
@@ -67,16 +76,18 @@
                [matAutocomplete]="auto4">
         <mat-autocomplete #auto4="matAutocomplete">
           <mat-option *ngFor="let microwave of filteredOptionsMicrowaves | async" [value]="microwave.Modell">
-            Márka: {{microwave.Marka}}
-            Modell: {{microwave.Modell}}
-            Típus: {{microwave.Tipus}}
-            Teljesítmény (W): {{microwave.Teljesitmeny}}
+            <div class="option-content">
+              <p>Márka: {{microwave.Marka}}</p>
+              <p>Modell: {{microwave.Modell}}</p>
+              <p>Típus: {{microwave.Tipus}}</p>
+              <p>Teljesítmény: {{microwave.Teljesitmeny}} W</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Valassza ki a mosogatógépét:</mat-label>
+        <mat-label>{{ filteredOptionsDishwashers ? 'Válassza ki a mosogatógépét' : 'Mosogatógépek betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
@@ -85,15 +96,18 @@
                [matAutocomplete]="auto5">
         <mat-autocomplete #auto5="matAutocomplete">
           <mat-option *ngFor="let dishwasher of filteredOptionsDishwashers | async" [value]="dishwasher.Modell">
-            Márka: {{dishwasher.Marka}}
-            Modell: {{dishwasher.Modell}}
-            Típus: {{dishwasher.Tipus}}
+            <div class="option-content">
+              <p>Márka: {{dishwasher.Marka}}</p>
+              <p>Modell: {{dishwasher.Modell}}</p>
+              <p>Típus: {{dishwasher.Tipus}}</p>
+              <p>Energiahatékonysági osztály: {{dishwasher.Energiahatekonysagi_osztaly}}</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Valassza ki a páraelszívóját</mat-label>
+        <mat-label>{{ filteredOptionsDehumidifiers ? 'Válassza ki a páraelszívóját' : 'Páraelszívók betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
@@ -102,16 +116,18 @@
                [matAutocomplete]="auto6">
         <mat-autocomplete #auto6="matAutocomplete">
           <mat-option *ngFor="let dehumidifier of filteredOptionsDehumidifiers | async" [value]="dehumidifier.Modell">
-            Márka: {{dehumidifier.Marka}}
-            Modell: {{dehumidifier.Modell}}
-            Energia o: {{dehumidifier.Energiahatekonysagi_osztaly}}
-            Teljesítmény (W): {{dehumidifier.Teljesitmeny}}
+            <div class="option-content">
+              <p>Márka: {{dehumidifier.Marka}}</p>
+              <p>Modell: {{dehumidifier.Modell}}</p>
+              <p>Energiahatékonysági osztály: {{dehumidifier.Energiahatekonysagi_osztaly}}</p>
+              <p>Teljesítmény: {{dehumidifier.Teljesitmeny}} W</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Valassza ki a sütőjét</mat-label>
+        <mat-label>{{ filteredOptionsOvens ? 'Válassza ki a sütőjét' : 'Sütők betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
@@ -120,16 +136,18 @@
                [matAutocomplete]="auto7">
         <mat-autocomplete #auto7="matAutocomplete">
           <mat-option *ngFor="let oven of filteredOptionsOvens | async" [value]="oven.Modell">
-            Márka: {{oven.Marka}}
-            Modell: {{oven.Modell}}
-            Energia o: {{oven.Energiahatekonysagi_osztaly}} <br>
-            Teljesítmény (W): {{oven.Teljesitmeny}}
+            <div class="option-content">
+              <p>Márka: {{oven.Marka}}</p>
+              <p>Modell: {{oven.Modell}}</p>
+              <p>Energiahatékonysági osztály: {{oven.Energiahatekonysagi_osztaly}}</p>
+              <p>Teljesítmény: {{oven.Teljesitmeny}} W</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Valassza ki a mosógépét</mat-label>
+        <mat-label>{{ filteredOptionsWashing_machines ? 'Válassza ki a mosógépét' : 'Mosógépek betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
@@ -138,18 +156,20 @@
                [matAutocomplete]="auto8">
         <mat-autocomplete #auto8="matAutocomplete">
           <mat-option *ngFor="let washing_machine of filteredOptionsWashing_machines | async" [value]="washing_machine.Modell">
-            Márka: {{washing_machine.Marka}}
-            Modell: {{washing_machine.Modell}}
-            Típus: {{washing_machine.Tipus}}  <br>
-            Max töltetsúly (kg): {{washing_machine.Max_toltetsuly}}
-            Max centrifuga ford.szám: {{washing_machine.Max_cent_ford}}
-            Energiahatékonysági o: {{washing_machine.Energiahatekonysagi_osztaly}}
+            <div class="option-content">
+              <p>Márka: {{washing_machine.Marka}}</p>
+              <p>Modell: {{washing_machine.Modell}}</p>
+              <p>Típus: {{washing_machine.Tipus}}</p>
+              <p>Max töltetsúly: {{washing_machine.Max_toltetsuly}}kg</p>
+              <p>Max centrifuga ford.szám: {{washing_machine.Max_cent_ford}}</p>
+              <p>Energiahatékonysági osztály: {{washing_machine.Energiahatekonysagi_osztaly}}</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Valassza ki a szárítógépét</mat-label>
+        <mat-label>{{ filteredOptionsDryers ? 'Válassza ki a szárítógépét' : 'Szárítógépek betöltése...' }}</mat-label>
         <input type="text"
                placeholder="Válassz"
                aria-label="String"
@@ -158,10 +178,13 @@
                [matAutocomplete]="auto9">
         <mat-autocomplete #auto9="matAutocomplete">
           <mat-option *ngFor="let dryer of filteredOptionsDryers | async" [value]="dryer.Modell">
-            Márka: {{dryer.Marka}}
-            Modell: {{dryer.Modell}}
-            Max töltetsúly: {{dryer.Max_toltetsuly}}kg <br>
-            Energiahatékonysági o: {{dryer.Energiahatekonysagi_osztaly}}
+            <div class="option-content">
+              <p>Márka: {{dryer.Marka}}</p>
+              <p>Modell: {{dryer.Modell}}</p>
+              <p>Típus: {{dryer.Tipus}}</p>
+              <p>Max töltetsúly: {{dryer.Max_toltetsuly}}kg</p>
+              <p>Energiahatékonysági osztály: {{dryer.Energiahatekonysagi_osztaly}}</p> <br>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

@@ -1,106 +1,131 @@
 .home{
   background-image: url("/assets/home2.jpg");
-}
 
-
-.content{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  button{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    height: 50px;
-    width: 150px;
-    font-weight: bold;
-    border-radius: 10px;
-  }
-  button:hover{
-    background-color: lightblue;
-  }
-  .errorMessage{
-    font-weight: bold;
-    color: red;
-  }
-
-
-  .searchBar{
-    @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px) {
-      width: 320px;
+  .content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    bttn-container{
+      display: flex;
     }
-    width: 600px;
-    margin-top: 20px;
-    margin-left: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  .searchBar2{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-top: 15px;
-  }
-
-  .asd{
-    margin-top: 20px;
-    padding: 30px;
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    input{
+    button{
+      margin-top: 20px;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-bottom: 5px;
+      height: 50px;
+      width: 150px;
+      font-weight: bold;
       border-radius: 10px;
+    }
+    button:hover{
+      background-color: lightblue;
+    }
+    .errorMessage{
+      font-weight: bold;
+      color: red;
+    }
+
+
+    .searchBar{
+      @media only screen
+      and (min-device-width : 260px)
+      and (max-device-width : 318px) {
+        width: 260px;
+      }
+      @media only screen
+      and (min-device-width : 320px)
+      and (max-device-width : 550px) {
+        width: 320px;
+      }
+      width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+    }
+    .searchBar2{
+      @media only screen
+      and (min-device-width : 260px)
+      and (max-device-width : 318px) {
+        width: 260px;
+      }
+      @media only screen
+      and (min-device-width : 320px)
+      and (max-device-width : 550px) {
+        width: 320px;
+      }
+      width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    .hoursInput{
+      margin-top: 20px;
+      padding: 30px;
+      border-radius: 15px;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      input{
+        border-radius: 10px;
+        font-size: 15px;
+      }
+    }
+
+    .hoursInputContainer{
+      @media only screen
+      and (min-device-width : 320px)
+      and (max-device-width : 480px) {
+        margin:auto;
+      }
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin: 0 auto; /* Ezzel középre igazítod a szélességét */
+      align-items: center; /* Középre igazítás függőlegesen */
+      justify-content: center; /* Középre igazítás vízszintesen */
+    }
+    h1{
+      font-size: 23px;
+      color: lightblue;
+    }
+    .recommendation{
+      margin-top: 5px;
+      margin-bottom: 20px;
+      padding: 30px;
+      border-radius: 15px;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      font-size: 15px;
+
+    }
+
+    .results{
+      margin-top: 5px;
+      margin-bottom: 20px;
+      padding: 30px;
+      border-radius: 15px;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
       font-size: 15px;
     }
-  }
 
-  .hoursInput{
-    @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px) {
-      margin:auto;
-    }
-    margin-left: 160px;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  h1{
-    font-size: 23px;
-    color: lightblue;
-  }
-  .recommendation{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 30px;
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    font-size: 15px;
 
-  }
-
-  .results{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 30px;
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    font-size: 15px;
   }
 
 }
+
+
+
 
 
 
