@@ -238,6 +238,21 @@
         </mat-form-field>
 
         <mat-form-field>
+          <mat-label class="labelname">Ezeknek a mikrohullámú sütőknek a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select class="matselect">
+            <mat-option *ngFor="let microwave of microwaves_w_lower_consumption" [value]="microwave" >
+              <div class="option-content">
+                <p>Márka: {{microwave.Marka}}</p>
+                <p>Modell: {{microwave.Modell}}</p>
+                <p>Típus: {{microwave.Tipus}}</p>
+                <p>Teljesítmény: {{microwave.Teljesitmeny}}</p>
+                <p>Óránkénti fogyasztás: {{microwave.Fogyasztas}} kWh</p> <br>
+              </div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
           <mat-label class="labelname">Ezeknek a mosogatógépeknek a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let dishwasher of dishwashers_w_lower_consumption" [value]="dishwasher" >
@@ -247,6 +262,20 @@
                 <p>Tipus: {{dishwasher.Tipus}}</p>
                 <p>Energiahatékonysági osztály: {{dishwasher.Energiahatekonysagi_osztaly}}</p>
                 <p>Fogyasztás 1 eco program alatt: {{dishwasher.Fogyasztas_kWh_eco_program}} kWh</p> <br>
+              </div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label class="labelname">Ezeknek a páraelszívóknak a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select class="matselect">
+            <mat-option *ngFor="let dehumidifier of dehumidifiers_w_lower_consumption" [value]="dehumidifier" >
+              <div class="option-content">
+                <p>Márka: {{dehumidifier.Marka}}</p>
+                <p>Modell: {{dehumidifier.Modell}}</p>
+                <p>Teljesítmény: {{dehumidifier.Teljesitmeny}}</p>
+                <p>Óránkénti fogyasztás: {{dehumidifier.Fogyasztas}} kWh</p> <br>
               </div>
             </mat-option>
           </mat-select>
@@ -413,6 +442,12 @@
           </p>
           <p>
             Kiválasztott főzőlap óránkénti fogyasztása: {{selected_hot_plate_c}} kWh
+          </p>
+          <p>
+            Kiválasztott mikrohullámú sütő óránkénti fogyasztása: {{selected_microwave_c}} kWh
+          </p>
+          <p>
+            Kiválasztott páraelszívó óránkénti fogyasztása: {{selected_dehumidifier_c}} kWh
           </p>
           <p>
             Kiválasztott sütő fogyasztása: {{selected_oven_c_traditional}} kWh/ckilus (hagyományos üzemmód)

@@ -43,10 +43,12 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
   public hot_plates_w_lower_consumption!: Hot_plate[];
   public microwaves!: Microwave[];
   public minmicrowave!: Microwave[];
+  public microwaves_w_lower_consumption!: Microwave[];
   public dishwashers!: Dishwasher[];
   public mindishwasher!: Dishwasher[];
   public dishwashers_w_lower_consumption!: Dishwasher[];
   public dehumidifiers! : Dehumidifier[];
+  public dehumidifiers_w_lower_consumption! : Dehumidifier[];
   public mindehumidifier!: Dehumidifier[];
   public ovens! : Oven[];
   public minoventraditional!: Oven[];
@@ -83,6 +85,8 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
   public selected_freezer_y_c!: number | undefined;
   public selected_dishwasher_ep_c!: number | undefined;
   public selected_hot_plate_c!: number | undefined;
+  public selected_microwave_c!: number | undefined;
+  public selected_dehumidifier_c!: number | undefined;
   public selected_oven_c_traditional!: number | undefined;
   public selected_oven_c_airmixing!: number | undefined;
   public selected_washing_m_ep40_60_c!: number | undefined;
@@ -183,6 +187,17 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         );
       });
 
+    this.form.get('searchValueMicrowave')!.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(modell => {
+      const microwavesData = this.microwaves.find(value => value.Modell === modell);
+      if (microwavesData){
+        this.apiService.getSearchedMicrowavesFromApi$(microwavesData.Fogyasztas!)
+          .pipe(first())
+          .subscribe((microwaves_w_lower_consumption) => {
+            this.microwaves_w_lower_consumption = microwaves_w_lower_consumption;
+          });
+      }
+    });
+
     this.apiService.getDishwashersFromApi$()
       .pipe(first())
       .subscribe((dishwashers) => {
@@ -213,6 +228,17 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
           map(value => this._filter(value || '',dehumidifiers)),
         );
       });
+
+    this.form.get('searchValueDehumidifier')!.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(modell => {
+      const dehumidifiersData = this.dehumidifiers.find(value => value.Modell === modell);
+      if (dehumidifiersData){
+        this.apiService.getSearchedDehumidifiersFromApi$(dehumidifiersData.Fogyasztas!)
+          .pipe(first())
+          .subscribe((dehumidifiers_w_lower_consumption) => {
+            this.dehumidifiers_w_lower_consumption = dehumidifiers_w_lower_consumption;
+          });
+      }
+    });
 
     this.apiService.getOvensFromApi$()
       .pipe(first())
@@ -443,6 +469,8 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
 
         this.selected_refrigerator_y_c = refrigerator_yearly_consumption;
         this.selected_freezer_y_c = freezer_yearly_consumption;
+        this.selected_microwave_c = microwave_consumption;
+        this.selected_dehumidifier_c = dehumidifier_consumption;
         this.selected_hot_plate_c = hot_plate_consumption;
         this.selected_oven_c_traditional = oven_consumption_traditional;
         this.selected_oven_c_airmixing = oven_consumption_airmixing;
