@@ -14,10 +14,6 @@ import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
 import {first, map, Observable, startWith, Subject, takeUntil} from "rxjs";
 import {LoginService} from "../../shared/api/login.service";
 
-// Az egyedi validációs függvény, amely ellenőrzi, hogy legalább egy mező kitöltve van
-
-
-
 @Component({
   selector: 'app-kalkulator',
   templateUrl: './kalkulator.component.html',

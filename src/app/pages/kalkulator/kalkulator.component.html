@@ -11,7 +11,7 @@
                  matInput
                  formControlName="searchValueRefrigerator"
                  [matAutocomplete]="auto1">
-          <mat-autocomplete #auto1="matAutocomplete1" >
+          <mat-autocomplete #auto1="matAutocomplete" >
             <mat-option *ngFor="let refrigerator of filteredOptionsRefrigerators | async" [value]="refrigerator.Modell">
               <div class="option-content">
                 <p>Márka: {{refrigerator.Marka}}</p>
@@ -32,7 +32,7 @@
                  matInput
                  formControlName="searchValueFreezer"
                  [matAutocomplete]="auto2">
-          <mat-autocomplete #auto2="matAutocomplete2">
+          <mat-autocomplete #auto2="matAutocomplete">
             <mat-option *ngFor="let freezer of filteredOptionsFreezers | async" [value]="freezer.Modell">
               <div class="option-content">
                 <p>Márka: {{freezer.Marka}}</p>
@@ -53,7 +53,7 @@
                  matInput
                  formControlName="searchValueHot_plate"
                  [matAutocomplete]="auto3">
-          <mat-autocomplete #auto3="matAutocomplete3">
+          <mat-autocomplete #auto3="matAutocomplete">
             <mat-option *ngFor="let hot_plate of filteredOptionsHot_plates | async" [value]="hot_plate.Modell">
               <div class="option-content">
                 <p>Márka: {{hot_plate.Marka}}</p>
@@ -73,7 +73,7 @@
                  matInput
                  formControlName="searchValueMicrowave"
                  [matAutocomplete]="auto4">
-          <mat-autocomplete #auto4="matAutocomplete4">
+          <mat-autocomplete #auto4="matAutocomplete">
             <mat-option *ngFor="let microwave of filteredOptionsMicrowaves | async" [value]="microwave.Modell">
               <div class="option-content">
                 <p>Márka: {{microwave.Marka}}</p>
@@ -93,7 +93,7 @@
                  matInput
                  formControlName="searchValueDishwasher"
                  [matAutocomplete]="auto5">
-          <mat-autocomplete #auto5="matAutocomplete5">
+          <mat-autocomplete #auto5="matAutocomplete">
             <mat-option *ngFor="let dishwasher of filteredOptionsDishwashers | async" [value]="dishwasher.Modell">
               <div class="option-content">
                 <p>Márka: {{dishwasher.Marka}}</p>
@@ -113,7 +113,7 @@
                  matInput
                  formControlName="searchValueDehumidifier"
                  [matAutocomplete]="auto6">
-          <mat-autocomplete #auto6="matAutocomplete6">
+          <mat-autocomplete #auto6="matAutocomplete">
             <mat-option *ngFor="let dehumidifier of filteredOptionsDehumidifiers | async" [value]="dehumidifier.Modell">
               <div class="option-content">
                 <p>Márka: {{dehumidifier.Marka}}</p>
@@ -133,7 +133,7 @@
                  matInput
                  formControlName="searchValueOven"
                  [matAutocomplete]="auto7">
-          <mat-autocomplete #auto7="matAutocomplete7">
+          <mat-autocomplete #auto7="matAutocomplete">
             <mat-option *ngFor="let oven of filteredOptionsOvens | async" [value]="oven.Modell">
               <div class="option-content">
                 <p>Márka: {{oven.Marka}}</p>
@@ -153,7 +153,7 @@
                  matInput
                  formControlName="searchValueWashing_machine"
                  [matAutocomplete]="auto8">
-          <mat-autocomplete #auto8="matAutocomplete8">
+          <mat-autocomplete #auto8="matAutocomplete">
             <mat-option *ngFor="let washing_machine of filteredOptionsWashing_machines | async" [value]="washing_machine.Modell">
               <div class="option-content">
                 <p>Márka: {{washing_machine.Marka}}</p>
@@ -175,7 +175,7 @@
                  matInput
                  formControlName="searchValueDryer"
                  [matAutocomplete]="auto9">
-          <mat-autocomplete #auto9="matAutocomplete9">
+          <mat-autocomplete #auto9="matAutocomplete">
             <mat-option *ngFor="let dryer of filteredOptionsDryers | async" [value]="dryer.Modell">
               <div class="option-content">
                 <p>Márka: {{dryer.Marka}}</p>
