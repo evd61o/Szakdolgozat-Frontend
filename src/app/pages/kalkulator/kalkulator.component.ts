@@ -10,9 +10,12 @@ import {
   Refrigerator,
   Washing_machine
 } from "../interface/interfaces";
-import {FormBuilder, Validators} from "@angular/forms";
-import {first, map, Observable, startWith, Subject, switchMap, takeUntil} from "rxjs";
+import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
+import {first, map, Observable, startWith, Subject, takeUntil} from "rxjs";
 import {LoginService} from "../../shared/api/login.service";
+
+// Az egyedi validációs függvény, amely ellenőrzi, hogy legalább egy mező kitöltve van
+
 
 
 @Component({
@@ -94,15 +97,16 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
 
 
   public form = this.fb.group({
-    searchValueRefrigerator: ['', Validators.required],
-    searchValueFreezer: ['', Validators.required],
-    searchValueHot_plate: ['', Validators.required],
-    searchValueMicrowave: ['', Validators.required],
-    searchValueDishwasher: ['', Validators.required],
-    searchValueDehumidifier: ['', Validators.required],
-    searchValueOven: ['', Validators.required],
-    searchValueWashing_machine: ['', Validators.required],
-    searchValueDryer: ['', Validators.required],
+
+    searchValueRefrigerator: [''],
+    searchValueFreezer: [''],
+    searchValueHot_plate: [''],
+    searchValueMicrowave: [''],
+    searchValueDishwasher: [''],
+    searchValueDehumidifier: [''],
+    searchValueOven: [''],
+    searchValueWashing_machine: [''],
+    searchValueDryer: [''],
     searchBarHot_plateMinutesInput: 0,
     searchBarMicrowaveMinutesInput: 0,
     searchBarDishwasherEcoProgramCountInput: 0,
@@ -110,8 +114,34 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     searchBarOvenCicleCountInput: 0,
     searchBarWashingMachineEcoProgram40_60CountInput: 0,
     submitType: ''
-  });
+  }, { validators: this.atLeastOneStringHasValueValidator });
+
+
   constructor(public readonly apiService: ApiService, private fb: FormBuilder, private readonly loginService: LoginService) {}
+
+  atLeastOneStringHasValueValidator(group: FormGroup) {
+    const stringFields = [
+      'searchValueRefrigerator',
+      'searchValueFreezer',
+      'searchValueHot_plate',
+      'searchValueMicrowave',
+      'searchValueDishwasher',
+      'searchValueDehumidifier',
+      'searchValueOven',
+      'searchValueWashing_machine',
+      'searchValueDryer'
+    ];
+
+    for (const field of stringFields) {
+      const control: AbstractControl | null = group.get(field);
+
+      if (control && control.value.trim() !== '') {
+        return null; // Találtunk egy mezőt, ami érvényes
+      }
+    }
+
+    return { atLeastOneStringRequired: true }; // Nincs egyetlen mező sem, amely érvényes
+  }
 
   public ngOnInit(): void {
     this.apiService.getRefrigeratorsFromApi$()
@@ -407,19 +437,19 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         console.log(washing_machine_values?.Fogyasztas_eco_40_60_program);
         console.log(dryer_values?.Fogyasztasnap);
 
-        let refrigerator_daily_consumption = refrigerator_values?.Fogyasztasnap;
-        let freezer_daily_consumption = freezer_values?.Fogyasztasnap;
-        let refrigerator_yearly_consumption = refrigerator_values?.Fogyasztasev;
-        let freezer_yearly_consumption = freezer_values?.Fogyasztasev;
-        let hot_plate_consumption = hot_plate_values?.Fogyasztas;
-        let microwave_consumption = microwave_values?.Fogyasztas;
-        let dishwasher_eco_program_consumption = dishwasher_values?.Fogyasztas_kWh_eco_program;
-        let dehumidifier_consumption = dehumidifier_values?.Fogyasztas;
-        let oven_consumption_traditional = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos;
-        let oven_consumption_airmixing = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses;
-        let washing_machine_eco_40_60_program_consumption = washing_machine_values?.Fogyasztas_eco_40_60_program;
-        let dryer_daily_consumption = dryer_values?.Fogyasztasnap;
-        let dryer_yearly_consumption = dryer_values?.Fogyasztasev;
+        let refrigerator_daily_consumption = refrigerator_values?.Fogyasztasnap || 0;
+        let freezer_daily_consumption = freezer_values?.Fogyasztasnap || 0;
+        let refrigerator_yearly_consumption = refrigerator_values?.Fogyasztasev || 0;
+        let freezer_yearly_consumption = freezer_values?.Fogyasztasev || 0;
+        let hot_plate_consumption = hot_plate_values?.Fogyasztas || 0;
+        let microwave_consumption = microwave_values?.Fogyasztas || 0;
+        let dishwasher_eco_program_consumption = dishwasher_values?.Fogyasztas_kWh_eco_program || 0;
+        let dehumidifier_consumption = dehumidifier_values?.Fogyasztas || 0;
+        let oven_consumption_traditional = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos || 0;
+        let oven_consumption_airmixing = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses || 0;
+        let washing_machine_eco_40_60_program_consumption = washing_machine_values?.Fogyasztas_eco_40_60_program || 0;
+        let dryer_daily_consumption = dryer_values?.Fogyasztasnap || 0;
+        let dryer_yearly_consumption = dryer_values?.Fogyasztasev || 0;
 
         let searchBarHot_plateMinutesInput = form_value.searchBarHot_plateMinutesInput!/60;
         let searchBarMicrowaveMinutesInput = form_value.searchBarMicrowaveMinutesInput!/60;
@@ -496,4 +526,5 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     this.onDestroy$.complete();
   }
 
+  protected readonly isNaN = isNaN;
 }

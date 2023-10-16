@@ -11,7 +11,7 @@
                  matInput
                  formControlName="searchValueRefrigerator"
                  [matAutocomplete]="auto1">
-          <mat-autocomplete #auto1="matAutocomplete" >
+          <mat-autocomplete #auto1="matAutocomplete1" >
             <mat-option *ngFor="let refrigerator of filteredOptionsRefrigerators | async" [value]="refrigerator.Modell">
               <div class="option-content">
                 <p>Márka: {{refrigerator.Marka}}</p>
@@ -32,7 +32,7 @@
                  matInput
                  formControlName="searchValueFreezer"
                  [matAutocomplete]="auto2">
-          <mat-autocomplete #auto2="matAutocomplete">
+          <mat-autocomplete #auto2="matAutocomplete2">
             <mat-option *ngFor="let freezer of filteredOptionsFreezers | async" [value]="freezer.Modell">
               <div class="option-content">
                 <p>Márka: {{freezer.Marka}}</p>
@@ -53,7 +53,7 @@
                  matInput
                  formControlName="searchValueHot_plate"
                  [matAutocomplete]="auto3">
-          <mat-autocomplete #auto3="matAutocomplete">
+          <mat-autocomplete #auto3="matAutocomplete3">
             <mat-option *ngFor="let hot_plate of filteredOptionsHot_plates | async" [value]="hot_plate.Modell">
               <div class="option-content">
                 <p>Márka: {{hot_plate.Marka}}</p>
@@ -73,7 +73,7 @@
                  matInput
                  formControlName="searchValueMicrowave"
                  [matAutocomplete]="auto4">
-          <mat-autocomplete #auto4="matAutocomplete">
+          <mat-autocomplete #auto4="matAutocomplete4">
             <mat-option *ngFor="let microwave of filteredOptionsMicrowaves | async" [value]="microwave.Modell">
               <div class="option-content">
                 <p>Márka: {{microwave.Marka}}</p>
@@ -93,7 +93,7 @@
                  matInput
                  formControlName="searchValueDishwasher"
                  [matAutocomplete]="auto5">
-          <mat-autocomplete #auto5="matAutocomplete">
+          <mat-autocomplete #auto5="matAutocomplete5">
             <mat-option *ngFor="let dishwasher of filteredOptionsDishwashers | async" [value]="dishwasher.Modell">
               <div class="option-content">
                 <p>Márka: {{dishwasher.Marka}}</p>
@@ -113,7 +113,7 @@
                  matInput
                  formControlName="searchValueDehumidifier"
                  [matAutocomplete]="auto6">
-          <mat-autocomplete #auto6="matAutocomplete">
+          <mat-autocomplete #auto6="matAutocomplete6">
             <mat-option *ngFor="let dehumidifier of filteredOptionsDehumidifiers | async" [value]="dehumidifier.Modell">
               <div class="option-content">
                 <p>Márka: {{dehumidifier.Marka}}</p>
@@ -133,7 +133,7 @@
                  matInput
                  formControlName="searchValueOven"
                  [matAutocomplete]="auto7">
-          <mat-autocomplete #auto7="matAutocomplete">
+          <mat-autocomplete #auto7="matAutocomplete7">
             <mat-option *ngFor="let oven of filteredOptionsOvens | async" [value]="oven.Modell">
               <div class="option-content">
                 <p>Márka: {{oven.Marka}}</p>
@@ -153,7 +153,7 @@
                  matInput
                  formControlName="searchValueWashing_machine"
                  [matAutocomplete]="auto8">
-          <mat-autocomplete #auto8="matAutocomplete">
+          <mat-autocomplete #auto8="matAutocomplete8">
             <mat-option *ngFor="let washing_machine of filteredOptionsWashing_machines | async" [value]="washing_machine.Modell">
               <div class="option-content">
                 <p>Márka: {{washing_machine.Marka}}</p>
@@ -175,7 +175,7 @@
                  matInput
                  formControlName="searchValueDryer"
                  [matAutocomplete]="auto9">
-          <mat-autocomplete #auto9="matAutocomplete">
+          <mat-autocomplete #auto9="matAutocomplete9">
             <mat-option *ngFor="let dryer of filteredOptionsDryers | async" [value]="dryer.Modell">
               <div class="option-content">
                 <p>Márka: {{dryer.Marka}}</p>
@@ -189,9 +189,9 @@
         </mat-form-field>
       </div>
 
-      <div class="searchBar2" *ngIf="showAfterKalkulate">
+      <div class="searchBar2" *ngIf="showAfterKalkulate ">
         <h1>Villamosenergia fogyasztás csökkentő javaslatok:</h1>
-        <mat-form-field class="searchBar2">
+        <mat-form-field *ngIf="showAfterKalkulate && refrigerators_w_lower_consumption && refrigerators_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a hűtőknek a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let refrigerator of refrigerators_w_lower_consumption" [value]="refrigerator" >
@@ -207,7 +207,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="showAfterKalkulate && freezers_w_lower_consumption && freezers_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a fagyasztóknak a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let freezer of freezers_w_lower_consumption" [value]="freezer" >
@@ -222,7 +222,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="showAfterKalkulate && hot_plates_w_lower_consumption && hot_plates_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a főzőlapoknak a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let hot_plates of hot_plates_w_lower_consumption" [value]="hot_plates" >
@@ -237,7 +237,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="showAfterKalkulate && microwaves_w_lower_consumption && microwaves_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a mikrohullámú sütőknek a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let microwave of microwaves_w_lower_consumption" [value]="microwave" >
@@ -252,7 +252,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="showAfterKalkulate && dishwashers_w_lower_consumption && dishwashers_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a mosogatógépeknek a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let dishwasher of dishwashers_w_lower_consumption" [value]="dishwasher" >
@@ -267,7 +267,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="showAfterKalkulate && dehumidifiers_w_lower_consumption && dehumidifiers_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a páraelszívóknak a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let dehumidifier of dehumidifiers_w_lower_consumption" [value]="dehumidifier" >
@@ -281,7 +281,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="showAfterKalkulate && ovens_w_lower_consumption && ovens_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a sütőknek a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let oven of ovens_w_lower_consumption" [value]="oven" >
@@ -297,7 +297,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="showAfterKalkulate && washing_machines_w_lower_consumption && washing_machines_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a mosógépeknek a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let washing_machine of washing_machines_w_lower_consumption" [value]="washing_machine" >
@@ -312,7 +312,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="showAfterKalkulate && dryers_w_lower_consumption && dryers_w_lower_consumption.length > 0">
           <mat-label class="labelname">Ezeknek a szárítógépeknek a használatával javíthat a fogyasztásán:</mat-label>
           <mat-select class="matselect">
             <mat-option *ngFor="let dryer of dryers_w_lower_consumption" [value]="dryer" >
@@ -389,7 +389,7 @@
           </div>
           <!-- Ha az adatok elérhetők, akkor megjelenítjük őket -->
           <ng-container *ngIf="minrefrigerator && minfreezer && minhot_plate && minmicrowave && mindishwasher && mindehumidifier && minoventraditional && minovenairmixing && minwashing_machine && mindryer">
-            <p *ngFor="let huto of minrefrigerator" >
+            <p *ngFor="let huto of minrefrigerator">
               Hűtő: {{huto.Marka}} {{huto.Modell}} {{huto.Fogyasztasev}} kWh/év
             </p>
             <p *ngFor="let fagyaszto of minfreezer">
@@ -422,7 +422,7 @@
           </ng-container>
         </div>
         <div class="results"  *ngIf="showAfterKalkulate">
-          <p>
+          <p >
             Napi áramfogyasztás: {{power_consumption_daily}} kWh, ára: {{power_consumption_daily_price}} Ft
           </p>
           <p>
@@ -431,34 +431,34 @@
           <p>
             Évi áramfogyasztás: {{power_consumption_yearly}} kWh, ára: {{power_consumption_yearly_price}} Ft
           </p>
-          <p>
+          <p *ngIf="selected_refrigerator_y_c !== undefined && selected_refrigerator_y_c > 0">
             Kiválasztott hűtő éves fogyasztása: {{selected_refrigerator_y_c}} kWh
           </p>
-          <p>
+          <p *ngIf="selected_freezer_y_c !== undefined && selected_freezer_y_c > 0">
             Kiválasztott fagyasztó éves fogyasztása: {{selected_freezer_y_c}} kWh
           </p>
-          <p>
+          <p *ngIf="selected_dryer_y_c !== undefined && selected_dryer_y_c > 0">
             Kiválasztott szárítógép éves fogyasztása: {{selected_dryer_y_c}} kWh
           </p>
-          <p>
+          <p *ngIf="selected_hot_plate_c !== undefined && selected_hot_plate_c > 0">
             Kiválasztott főzőlap óránkénti fogyasztása: {{selected_hot_plate_c}} kWh
           </p>
-          <p>
+          <p *ngIf="selected_microwave_c !== undefined && selected_microwave_c > 0">
             Kiválasztott mikrohullámú sütő óránkénti fogyasztása: {{selected_microwave_c}} kWh
           </p>
-          <p>
+          <p *ngIf="selected_dehumidifier_c !== undefined && selected_dehumidifier_c > 0">
             Kiválasztott páraelszívó óránkénti fogyasztása: {{selected_dehumidifier_c}} kWh
           </p>
-          <p>
+          <p *ngIf="selected_oven_c_traditional !== undefined && selected_oven_c_traditional > 0">
             Kiválasztott sütő fogyasztása: {{selected_oven_c_traditional}} kWh/ckilus (hagyományos üzemmód)
           </p>
-          <p>
+          <p *ngIf="selected_oven_c_airmixing !== undefined && selected_oven_c_airmixing > 0">
             Kiválasztott sütő fogyasztása: {{selected_oven_c_airmixing}} kWh/ckilus (légkeveréses üzemmód)
           </p>
-          <p>
+          <p *ngIf="selected_dishwasher_ep_c !== undefined && selected_dishwasher_ep_c > 0">
             Kiválasztott mosogatógép fogyasztása 1 eco program alatt: {{selected_dishwasher_ep_c}} kWh
           </p>
-          <p>
+          <p *ngIf="selected_washing_m_ep40_60_c !== undefined && selected_washing_m_ep40_60_c > 0">
             Kiválasztott mosógép súlyozott fogyasztása 1 eco 40-60 program alatt : {{selected_washing_m_ep40_60_c}} kWh
           </p>
         </div>
