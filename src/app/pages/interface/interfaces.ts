@@ -35,7 +35,7 @@ export interface Dishwasher {
   Modell?: string;
   Tipus?: string;
   Energiahatekonysagi_osztaly?: string;
-  Fogyasztas_kWh_eco_program?: number;
+  Fogyasztas_100_eco_program?: number;
 }
 export interface Dehumidifier {
   Marka?: string;
@@ -60,7 +60,6 @@ export interface Washing_machine {
   Max_toltetsuly?: number;
   Max_cent_ford?: number;
   Fogyasztas_100_eco_40_60_program?: number;
-  Fogyasztas_eco_40_60_program?: number;
 }
 export interface Dryer {
   Marka?: string;

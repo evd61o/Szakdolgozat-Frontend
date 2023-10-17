@@ -62,8 +62,8 @@ export class ApiService {
     return this.httpClient.get<Dishwasher[]>(`${this.basePath}/mosogatogepek`);
   }
 
-  public getSearchedDishwashersFromApi$(selected_dishwasher_ep_c: number): Observable<Dishwasher[]> {
-    return this.httpClient.get<Dishwasher[]>(`${this.basePath}/mosogatogepek/${selected_dishwasher_ep_c}`);
+  public getSearchedDishwashersFromApi$(selected_dishwasher_100_ep_c: number): Observable<Dishwasher[]> {
+    return this.httpClient.get<Dishwasher[]>(`${this.basePath}/mosogatogepek/${selected_dishwasher_100_ep_c}`);
   }
 
   public getDehumidifiersFromApi$(): Observable<Dehumidifier[]> {

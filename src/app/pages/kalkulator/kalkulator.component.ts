@@ -82,12 +82,14 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
 
   public selected_refrigerator_y_c!: number | undefined;
   public selected_freezer_y_c!: number | undefined;
+  public selected_dishwasher_100_ep_c!: number | undefined;
   public selected_dishwasher_ep_c!: number | undefined;
   public selected_hot_plate_c!: number | undefined;
   public selected_microwave_c!: number | undefined;
   public selected_dehumidifier_c!: number | undefined;
   public selected_oven_c_traditional!: number | undefined;
   public selected_oven_c_airmixing!: number | undefined;
+  public selected_washing_m_100_ep40_60_c!: number | undefined;
   public selected_washing_m_ep40_60_c!: number | undefined;
   public selected_dryer_y_c!: number | undefined;
 
@@ -237,7 +239,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     this.form.get('searchValueDishwasher')!.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(modell => {
       const dishwashersData = this.dishwashers.find(value => value.Modell === modell);
       if (dishwashersData){
-        this.apiService.getSearchedDishwashersFromApi$(dishwashersData.Fogyasztas_kWh_eco_program!)
+        this.apiService.getSearchedDishwashersFromApi$(dishwashersData.Fogyasztas_100_eco_program!)
           .pipe(first())
           .subscribe((dishwashers_w_lower_consumption) => {
             this.dishwashers_w_lower_consumption = dishwashers_w_lower_consumption;
@@ -300,7 +302,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
     this.form.get('searchValueWashing_machine')!.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(modell => {
       const freezersData = this.washing_machines.find(value => value.Modell === modell);
       if (freezersData){
-        this.apiService.getSearchedWashing_machinesFromApi$(freezersData.Fogyasztas_eco_40_60_program!)
+        this.apiService.getSearchedWashing_machinesFromApi$(freezersData.Fogyasztas_100_eco_40_60_program!)
           .pipe(first())
           .subscribe((washing_machines_w_lower_consumption) => {
             this.washing_machines_w_lower_consumption = washing_machines_w_lower_consumption;
@@ -431,11 +433,13 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         let freezer_daily_consumption = (freezer_values?.Fogyasztasev || 0) / 365;
         let hot_plate_consumption = hot_plate_values?.Fogyasztas || 0;
         let microwave_consumption = microwave_values?.Fogyasztas || 0;
-        let dishwasher_eco_program_consumption = dishwasher_values?.Fogyasztas_kWh_eco_program || 0;
+        let dishwasher_100_eco_program_consumption = dishwasher_values?.Fogyasztas_100_eco_program || 0;
+        let dishwasher_eco_program_consumption = (dishwasher_values?.Fogyasztas_100_eco_program || 0) / 100;
         let dehumidifier_consumption = dehumidifier_values?.Fogyasztas || 0;
         let oven_consumption_traditional = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos || 0;
         let oven_consumption_airmixing = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses || 0;
-        let washing_machine_eco_40_60_program_consumption = washing_machine_values?.Fogyasztas_eco_40_60_program || 0;
+        let washing_machine_100_eco_40_60_program_consumption = washing_machine_values?.Fogyasztas_100_eco_40_60_program || 0;
+        let washing_machine_eco_40_60_program_consumption = (washing_machine_values?.Fogyasztas_100_eco_40_60_program || 0) / 100;
         let dryer_yearly_consumption = dryer_values?.Fogyasztasev || 0;
         let dryer_daily_consumption = (dryer_values?.Fogyasztasev || 0) / 365;
 
@@ -503,7 +507,9 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         this.selected_oven_c_traditional = oven_consumption_traditional;
         this.selected_oven_c_airmixing = oven_consumption_airmixing;
         this.selected_dishwasher_ep_c = dishwasher_eco_program_consumption;
+        this.selected_dishwasher_100_ep_c = dishwasher_100_eco_program_consumption
         this.selected_washing_m_ep40_60_c = washing_machine_eco_40_60_program_consumption;
+        this.selected_washing_m_100_ep40_60_c =washing_machine_100_eco_40_60_program_consumption;
         this.selected_dryer_y_c = dryer_yearly_consumption;
 
         this.showBeforeKalkulate=false;

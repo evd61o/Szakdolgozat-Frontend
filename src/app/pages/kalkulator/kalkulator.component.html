@@ -261,7 +261,7 @@
                 <p>Modell: {{dishwasher.Modell}}</p>
                 <p>Tipus: {{dishwasher.Tipus}}</p>
                 <p>Energiahatékonysági osztály: {{dishwasher.Energiahatekonysagi_osztaly}}</p>
-                <p>Fogyasztás 1 eco program alatt: {{dishwasher.Fogyasztas_kWh_eco_program}} kWh</p> <br>
+                <p>Fogyasztás 100 eco program alatt: {{dishwasher.Fogyasztas_100_eco_program}} kWh</p> <br>
               </div>
             </mat-option>
           </mat-select>
@@ -307,7 +307,7 @@
               <p>Max töltetsúly: {{washing_machine.Max_toltetsuly}}</p>
               <p>Max centrifuga ford.szám: {{washing_machine.Max_cent_ford}}</p>
               <p>Energiahatékonysági osztály: {{washing_machine.Energiahatekonysagi_osztaly}}</p>
-              <p>Fogyasztás egy eco 40-60 program alatt: {{washing_machine.Fogyasztas_eco_40_60_program}} kWh</p> <br>
+              <p>Fogyasztás 100 eco 40-60 program alatt: {{washing_machine.Fogyasztas_100_eco_40_60_program}} kWh</p> <br>
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -402,7 +402,7 @@
               Mikrohullámú sütő: {{mikrohullamu_suto.Marka}} {{mikrohullamu_suto.Modell}} {{mikrohullamu_suto.Fogyasztas}} kWh
             </p>
             <p *ngFor="let mosogatogep of mindishwasher">
-              Mosogatógép: {{mosogatogep.Marka}} {{mosogatogep.Modell}} {{mosogatogep.Fogyasztas_kWh_eco_program}} kWh/eco program
+              Mosogatógép: {{mosogatogep.Marka}} {{mosogatogep.Modell}} {{mosogatogep.Fogyasztas_100_eco_program}} kWh/100 eco program
             </p>
             <p *ngFor="let paraelszivo of mindehumidifier">
               Páraelszívó: {{paraelszivo.Marka}} {{paraelszivo.Modell}} {{paraelszivo.Fogyasztas}} kWh
@@ -414,7 +414,7 @@
               Sütő: {{suto.Marka}} {{suto.Modell}} {{suto.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses}} kWh/cilus (légkeveréses üzemmód)
             </p>
             <p *ngFor="let mosogep of minwashing_machine">
-              Mosógép: {{mosogep.Marka}} {{mosogep.Modell}} {{mosogep.Fogyasztas_eco_40_60_program}} kWh/eco 40-60 program
+              Mosógép: {{mosogep.Marka}} {{mosogep.Modell}} {{mosogep.Fogyasztas_100_eco_40_60_program}} kWh/100 eco 40-60 program
             </p>
             <p *ngFor="let szaritogep of mindryer">
               Szárítógép: {{szaritogep.Marka}} {{szaritogep.Modell}} {{szaritogep.Fogyasztasev}} kWh/év
@@ -456,10 +456,10 @@
             Kiválasztott sütő fogyasztása: {{selected_oven_c_airmixing}} kWh/ckilus (légkeveréses üzemmód)
           </p>
           <p *ngIf="selected_dishwasher_ep_c !== undefined && selected_dishwasher_ep_c > 0">
-            Kiválasztott mosogatógép fogyasztása 1 eco program alatt: {{selected_dishwasher_ep_c}} kWh
+            Kiválasztott mosogatógép fogyasztása 100 eco program alatt: {{selected_dishwasher_100_ep_c}} kWh
           </p>
           <p *ngIf="selected_washing_m_ep40_60_c !== undefined && selected_washing_m_ep40_60_c > 0">
-            Kiválasztott mosógép súlyozott fogyasztása 1 eco 40-60 program alatt : {{selected_washing_m_ep40_60_c}} kWh
+            Kiválasztott mosógép súlyozott fogyasztása 100 eco 40-60 program alatt : {{selected_washing_m_100_ep40_60_c}} kWh
           </p>
         </div>
       </div>
