@@ -26,6 +26,7 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import {MatCardModule} from "@angular/material/card";
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -40,32 +41,33 @@ import { LogoutComponent } from './pages/logout/logout.component';
     ProfileComponent,
     LogoutComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatButtonModule,
-        MatIconModule,
-        HttpClientModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        MatAutocompleteModule,
-        MatCardModule,
-        FormsModule,
-        AngularFireModule.initializeApp({
-          apiKey: "AIzaSyCyxaikyhw05Kk_qwcKkhSPd9sbxH_-JII",
-          authDomain: "szakdolgozat-a8381.firebaseapp.com",
-          projectId: "szakdolgozat-a8381",
-          storageBucket: "szakdolgozat-a8381.appspot.com",
-          messagingSenderId: "781668655622",
-          appId: "1:781668655622:web:030258d653d84db637d987"
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    FormsModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyCyxaikyhw05Kk_qwcKkhSPd9sbxH_-JII",
+      authDomain: "szakdolgozat-a8381.firebaseapp.com",
+      projectId: "szakdolgozat-a8381",
+      storageBucket: "szakdolgozat-a8381.appspot.com",
+      messagingSenderId: "781668655622",
+      appId: "1:781668655622:web:030258d653d84db637d987"
 
-      }),
-    ],
+    }),
+    MatTooltipModule,
+  ],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })
