@@ -433,10 +433,11 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         console.log(washing_machine_values?.Fogyasztas_eco_40_60_program);
         console.log(dryer_values?.Fogyasztasnap);
 
-        let refrigerator_daily_consumption = refrigerator_values?.Fogyasztasnap || 0;
-        let freezer_daily_consumption = freezer_values?.Fogyasztasnap || 0;
+
         let refrigerator_yearly_consumption = refrigerator_values?.Fogyasztasev || 0;
+        let refrigerator_daily_consumption = (refrigerator_values?.Fogyasztasev || 0) / 365;
         let freezer_yearly_consumption = freezer_values?.Fogyasztasev || 0;
+        let freezer_daily_consumption = (freezer_values?.Fogyasztasev || 0) / 365;
         let hot_plate_consumption = hot_plate_values?.Fogyasztas || 0;
         let microwave_consumption = microwave_values?.Fogyasztas || 0;
         let dishwasher_eco_program_consumption = dishwasher_values?.Fogyasztas_kWh_eco_program || 0;
@@ -444,8 +445,8 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         let oven_consumption_traditional = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_hagyomanyos || 0;
         let oven_consumption_airmixing = oven_values?.Egy_uzemciklusra_vetitett_energiafogyasztas_legkevereses || 0;
         let washing_machine_eco_40_60_program_consumption = washing_machine_values?.Fogyasztas_eco_40_60_program || 0;
-        let dryer_daily_consumption = dryer_values?.Fogyasztasnap || 0;
         let dryer_yearly_consumption = dryer_values?.Fogyasztasev || 0;
+        let dryer_daily_consumption = (dryer_values?.Fogyasztasev || 0) / 365;
 
         let searchBarHot_plateMinutesInput = form_value.searchBarHot_plateMinutesInput!/60;
         let searchBarMicrowaveMinutesInput = form_value.searchBarMicrowaveMinutesInput!/60;
