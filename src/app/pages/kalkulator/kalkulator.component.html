@@ -3,7 +3,7 @@
     <div class="content">
       <div class="searchBar" *ngIf="showBeforeKalkulate">
         <h1>KALKULÁTOR</h1>
-        <mat-form-field id="hutok">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsRefrigerators ? 'Válassza ki a hűtőjét' : 'Hűtők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -24,7 +24,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field id="fagyasztok">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsFreezers ? 'Válassza ki a fagyasztóját' : 'Fagyasztók betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -45,7 +45,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field id="fozolapok">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsHot_plates ? 'Válassza ki a főzőlapját' : 'Főzőlapok betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -65,7 +65,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field id="mikrohullamu_sutok">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsMicrowaves ? 'Válassza ki a mikrohullámú sütőjét' : 'Mikrohullámú sütők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -85,7 +85,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field id="mosogatogepek">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsDishwashers ? 'Válassza ki a mosogatógépét' : 'Mosogatógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -105,7 +105,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field id="paraelszivok">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsDehumidifiers ? 'Válassza ki a páraelszívóját' : 'Páraelszívók betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -125,7 +125,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field id="sutok">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsOvens ? 'Válassza ki a sütőjét' : 'Sütők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -145,7 +145,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field id="mosogepek">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsWashing_machines ? 'Válassza ki a mosógépét' : 'Mosógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -167,7 +167,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field id="szaritogepek">
+        <mat-form-field>
           <mat-label>{{ filteredOptionsDryers ? 'Válassza ki a szárítógépét' : 'Szárítógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -334,6 +334,8 @@
             <input type="number"
                    min="0"
                    max="1000"
+                   id="hot_plateUsageInput"
+                   name="hot_plateUsage"
                    formControlName="searchBarHot_plateMinutesInput">
             <mat-icon matTooltip="Figyelem! Az alkalmazás úgy számol, hogy a főzőlap minden főzőzónája használatban van. Kérem ezt vegye figyelembe a napi használati perc megadásánál! Pédául, ha ön csak 1 főzőzónát használ és a főzőlapja 4 főzőzónával rendelkezik ossza el a használati percet 4-el, hogy pontosabb eredményt kapjon.">info</mat-icon>
           </div>
@@ -342,6 +344,8 @@
             <input type="number"
                    min="0"
                    max="400"
+                   id="microwaveUsageInput"
+                   name="microwaveUsage"
                    formControlName="searchBarMicrowaveMinutesInput">
           </div>
           <div>
@@ -349,6 +353,8 @@
             <input type="number"
                    min="0"
                    max="100"
+                   id="dishwasherUsageInput"
+                   name="dishwasherUsage"
                    formControlName="searchBarDishwasherEcoProgramCountInput">
           </div>
           <div>
@@ -356,6 +362,8 @@
             <input type="number"
                    min="0"
                    max="1000"
+                   id="dehumidifierUsageInput"
+                   name="dehumidifierUsage"
                    formControlName="searchBarDehumidifierMinutesInput">
           </div>
           <div>
@@ -363,6 +371,8 @@
             <input type="number"
                    min="0"
                    max="100"
+                   id="ovenUsageInput"
+                   name="ovenUsage"
                    formControlName="searchBarOvenCicleCountInput">
           </div>
           <div>
@@ -370,6 +380,8 @@
             <input type="number"
                    min="0"
                    max="100"
+                   id="washingmachineUsageInput"
+                   name="washingmachineUsage"
                    formControlName="searchBarWashingMachineEcoProgram40_60CountInput">
           </div>
 
