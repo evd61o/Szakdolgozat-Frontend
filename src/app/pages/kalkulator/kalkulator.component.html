@@ -192,8 +192,8 @@
       <div class="searchBar2" *ngIf="showAfterKalkulate ">
         <h1>Villamosenergia fogyasztás csökkentő javaslatok:</h1>
         <mat-form-field *ngIf="showAfterKalkulate && refrigerators_w_lower_consumption && refrigerators_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a hűtőknek a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="refrigerator_select">Ezeknek a hűtőknek a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="refrigerator_select" class="matselect">
             <mat-option *ngFor="let refrigerator of refrigerators_w_lower_consumption" [value]="refrigerator" >
               <div class="option-content">
                 <p>Márka: {{refrigerator.Marka}}</p>
@@ -208,8 +208,8 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="showAfterKalkulate && freezers_w_lower_consumption && freezers_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a fagyasztóknak a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="freezer_select">Ezeknek a fagyasztóknak a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="freezer_select" class="matselect">
             <mat-option *ngFor="let freezer of freezers_w_lower_consumption" [value]="freezer" >
               <div class="option-content">
                 <p>Márka: {{freezer.Marka}}</p>
@@ -223,8 +223,8 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="showAfterKalkulate && hot_plates_w_lower_consumption && hot_plates_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a főzőlapoknak a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="hot_plate_select">Ezeknek a főzőlapoknak a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="hot_plate_select">
             <mat-option *ngFor="let hot_plates of hot_plates_w_lower_consumption" [value]="hot_plates" >
               <div class="option-content">
                 <p>Márka: {{hot_plates.Marka}}</p>
@@ -238,8 +238,8 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="showAfterKalkulate && microwaves_w_lower_consumption && microwaves_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a mikrohullámú sütőknek a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="microwave_select">Ezeknek a mikrohullámú sütőknek a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="microwave_select">
             <mat-option *ngFor="let microwave of microwaves_w_lower_consumption" [value]="microwave" >
               <div class="option-content">
                 <p>Márka: {{microwave.Marka}}</p>
@@ -253,8 +253,8 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="showAfterKalkulate && dishwashers_w_lower_consumption && dishwashers_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a mosogatógépeknek a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="dishwasher_select">Ezeknek a mosogatógépeknek a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="dishwasher_select">
             <mat-option *ngFor="let dishwasher of dishwashers_w_lower_consumption" [value]="dishwasher" >
               <div class="option-content">
                 <p>Márka: {{dishwasher.Marka}}</p>
@@ -268,8 +268,8 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="showAfterKalkulate && dehumidifiers_w_lower_consumption && dehumidifiers_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a páraelszívóknak a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="dehumidifier_select">Ezeknek a páraelszívóknak a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="dehumidifier_select">
             <mat-option *ngFor="let dehumidifier of dehumidifiers_w_lower_consumption" [value]="dehumidifier" >
               <div class="option-content">
                 <p>Márka: {{dehumidifier.Marka}}</p>
@@ -282,8 +282,8 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="showAfterKalkulate && ovens_w_lower_consumption && ovens_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a sütőknek a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="oven_select">Ezeknek a sütőknek a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="oven_select">
             <mat-option *ngFor="let oven of ovens_w_lower_consumption" [value]="oven" >
               <div class="option-content">
                 <p>Márka: {{oven.Marka}}</p>
@@ -298,8 +298,8 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="showAfterKalkulate && washing_machines_w_lower_consumption && washing_machines_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a mosógépeknek a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="washing_machine_select">Ezeknek a mosógépeknek a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="washing_machine_select">
             <mat-option *ngFor="let washing_machine of washing_machines_w_lower_consumption" [value]="washing_machine" >
               <p>Márka: {{washing_machine.Marka}}</p>
               <p>Modell: {{washing_machine.Modell}}</p>
@@ -313,8 +313,8 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="showAfterKalkulate && dryers_w_lower_consumption && dryers_w_lower_consumption.length > 0">
-          <mat-label class="labelname">Ezeknek a szárítógépeknek a használatával javíthat a fogyasztásán:</mat-label>
-          <mat-select class="matselect">
+          <mat-label for="dryer_select">Ezeknek a szárítógépeknek a használatával javíthat a fogyasztásán:</mat-label>
+          <mat-select id="dryer_select">
             <mat-option *ngFor="let dryer of dryers_w_lower_consumption" [value]="dryer" >
               <p>Márka: {{dryer.Marka}}</p>
               <p>Modell: {{dryer.Modell}}</p>
