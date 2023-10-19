@@ -3,7 +3,7 @@
     <div class="content">
       <div class="searchBar" *ngIf="showBeforeKalkulate">
         <h1>KALKULÁTOR</h1>
-        <mat-form-field >
+        <mat-form-field id="hutok">
           <mat-label>{{ filteredOptionsRefrigerators ? 'Válassza ki a hűtőjét' : 'Hűtők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -24,7 +24,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field id="fagyasztok">
           <mat-label>{{ filteredOptionsFreezers ? 'Válassza ki a fagyasztóját' : 'Fagyasztók betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -45,7 +45,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field id="fozolapok">
           <mat-label>{{ filteredOptionsHot_plates ? 'Válassza ki a főzőlapját' : 'Főzőlapok betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -65,7 +65,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field id="mikrohullamu_sutok">
           <mat-label>{{ filteredOptionsMicrowaves ? 'Válassza ki a mikrohullámú sütőjét' : 'Mikrohullámú sütők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -85,7 +85,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field id="mosogatogepek">
           <mat-label>{{ filteredOptionsDishwashers ? 'Válassza ki a mosogatógépét' : 'Mosogatógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -105,7 +105,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field id="paraelszivok">
           <mat-label>{{ filteredOptionsDehumidifiers ? 'Válassza ki a páraelszívóját' : 'Páraelszívók betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -125,7 +125,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field id="sutok">
           <mat-label>{{ filteredOptionsOvens ? 'Válassza ki a sütőjét' : 'Sütők betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -145,7 +145,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field id="mosogepek">
           <mat-label>{{ filteredOptionsWashing_machines ? 'Válassza ki a mosógépét' : 'Mosógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
@@ -167,7 +167,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field id="szaritogepek">
           <mat-label>{{ filteredOptionsDryers ? 'Válassza ki a szárítógépét' : 'Szárítógépek betöltése...' }}</mat-label>
           <input type="text"
                  placeholder="Válassz"
