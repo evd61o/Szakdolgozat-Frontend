@@ -28,7 +28,7 @@ export class RegistrationComponent {
 
   onSubmit() {
     if (this.form.invalid && this.form.enabled){
-      this.errorMessage = "Töltsd az összes mezőt.\nA jelszó hossza minimum 8 karakter.";
+      this.errorMessage = "Töltsd az összes mezőt.";
     }
     if (this.form.valid && this.form.enabled) {
       this.apiRequestInProgress = true;

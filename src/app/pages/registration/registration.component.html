@@ -20,6 +20,12 @@
         <div class="registrationerror">
         <span *ngIf="show" >Sikertelen regisztráció!<br/></span>
         <span *ngIf="errorMessage" >{{errorMessage}}</span>
+          <div *ngIf="form.get('email')?.hasError('email')">
+            Az e-mail cím nem megfelelő formátumú.
+          </div>
+          <div *ngIf="form.get('password')?.hasError('minlength')">
+            A jelszónak legalább 8 karakter hosszúnak kell lennie.
+          </div>
         </div>
       </div>
     </div>
