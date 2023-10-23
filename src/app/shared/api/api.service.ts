@@ -5,10 +5,10 @@ import {
   Dehumidifier,
   Dishwasher, Dryer,
   Freezer,
-  Hot_plate,
+  Hot_plate, Login,
   Microwave,
   Oven, Profiles,
-  Refrigerator,
+  Refrigerator, Registration,
   Washing_machine
 } from "../../pages/interface/interfaces";
 
@@ -141,16 +141,16 @@ export class ApiService {
     return this.httpClient.get<Profiles[]>(`${this.basePath}/profiles/${email}`);
   }
 
-  public register$(user: any): Observable<Object> {
-    return this.httpClient.post<Object>(this.basePath+'/users', user);
+  public register$(user: any): Observable<Registration[]> {
+    return this.httpClient.post<Registration[]>(this.basePath+'/users', user);
   }
 
-  public login$(user: any): Observable<Object> {
-    return this.httpClient.post<Object>(this.basePath+'/users', user);
+  public login$(user: any): Observable<Login[]> {
+    return this.httpClient.post<Login[]>(this.basePath+'/users', user);
   }
 
-  public profile$(favorites: any): Observable<Object> {
-    return this.httpClient.post<Object>(this.basePath+'/profiles', favorites);
+  public profile$(favorites: any): Observable<Profiles[]> {
+    return this.httpClient.post<Profiles[]>(this.basePath+'/profiles', favorites);
   }
 
 

@@ -83,3 +83,16 @@ export interface Profiles {
   searchValueDryer?: string;
   email?: string;
 }
+
+export interface Registration {
+  username?: string;
+  email?: string;
+  password?: string;
+  action?: string;
+}
+
+export interface Login {
+  email?: string;
+  password?: string;
+  action?: string;
+}
