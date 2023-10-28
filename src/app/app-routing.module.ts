@@ -15,8 +15,8 @@ const routes: Routes = [
   { path: 'informaciok', component:ImportantInformationsComponent },
   { path: 'bejelentkezes', component:LoginComponent, canActivate: [AuthGuardGuard] },
   { path: 'regisztracio', component:RegistrationComponent },
-  { path: 'profil', component:ProfileComponent , canActivate: [!AuthGuardGuard] },
-  { path: 'kijelentkezes', component:LogoutComponent , canActivate: [!AuthGuardGuard] },
+  { path: 'profil', component:ProfileComponent, canActivate: [AuthGuardGuard] },
+  { path: 'kijelentkezes', component:LogoutComponent, canActivate: [AuthGuardGuard]},
   { path: '**', component:HomeComponent }
 ];
 
