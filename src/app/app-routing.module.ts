@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'kalkulator', component: KalkulatorComponent },
   { path: 'informaciok', component:ImportantInformationsComponent },
   { path: 'bejelentkezes', component:LoginComponent, canActivate: [AuthGuardGuard] },
-  { path: 'regisztracio', component:RegistrationComponent },
+  { path: 'regisztracio', component:RegistrationComponent, canActivate: [AuthGuardGuard] },
   { path: 'profil', component:ProfileComponent, canActivate: [AuthGuardGuard2]  },
   { path: 'kijelentkezes', component:LogoutComponent, canActivate: [AuthGuardGuard2]  },
   { path: '**', component:HomeComponent }

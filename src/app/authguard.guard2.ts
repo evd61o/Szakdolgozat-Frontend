@@ -22,7 +22,7 @@ export class AuthGuardGuard2 implements CanActivate {
   private getCanLoadResult(
     userEmail: string
   ): boolean | UrlTree {
-    if (!userEmail) {
+    if (userEmail) {
       return true;
     } else {
       return this.router.createUrlTree([""]);
