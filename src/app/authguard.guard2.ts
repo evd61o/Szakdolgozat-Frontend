@@ -10,7 +10,7 @@ import {LoginService} from "./shared/api/login.service";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardGuard implements CanActivate {
+export class AuthGuardGuard2 implements CanActivate {
   constructor(private readonly router: Router, private readonly loginService: LoginService ) {}
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {

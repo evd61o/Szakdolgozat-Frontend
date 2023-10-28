@@ -8,6 +8,7 @@ import {RegistrationComponent} from "./pages/registration/registration.component
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {AuthGuardGuard} from "./auth-guard.guard";
 import {LogoutComponent} from "./pages/logout/logout.component";
+import {AuthGuardGuard2} from "./authguard.guard2";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,14 +16,14 @@ const routes: Routes = [
   { path: 'informaciok', component:ImportantInformationsComponent },
   { path: 'bejelentkezes', component:LoginComponent, canActivate: [AuthGuardGuard] },
   { path: 'regisztracio', component:RegistrationComponent },
-  { path: 'profil', component:ProfileComponent, canActivate: [AuthGuardGuard]  },
-  { path: 'kijelentkezes', component:LogoutComponent, canActivate: [AuthGuardGuard]  },
+  { path: 'profil', component:ProfileComponent, canActivate: [AuthGuardGuard2]  },
+  { path: 'kijelentkezes', component:LogoutComponent, canActivate: [AuthGuardGuard2]  },
   { path: '**', component:HomeComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuardGuard]
+  providers: [AuthGuardGuard, AuthGuardGuard2]
 })
 export class AppRoutingModule { }
