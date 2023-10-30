@@ -65,6 +65,9 @@ export class RegistrationComponent {
     }
     if (this.form.invalid && this.form.enabled) {
       this.form.markAllAsTouched();
+      if (this.form.get('email')?.hasError('email')) {
+        this.errorMessage = 'Érvénytelen e-mail cím formátum';
+      }
     }
   }
 }
