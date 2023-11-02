@@ -117,7 +117,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
 
   constructor(public readonly apiService: ApiService, private fb: FormBuilder, private readonly loginService: LoginService) {}
 
-  atLeastOneStringHasValueValidator(group: FormGroup) {
+  atLeastOneStringHasValueValidator(group: FormGroup){
     const stringFields = [
       'searchValueRefrigerator',
       'searchValueFreezer',
@@ -146,7 +146,8 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
       .pipe(first())
       .subscribe((refrigerators) => {
         this.refrigerators = refrigerators;
-        this.filteredOptionsRefrigerators = this.form.get('searchValueRefrigerator')!.valueChanges.pipe(
+        this.filteredOptionsRefrigerators =
+          this.form.get('searchValueRefrigerator')!.valueChanges.pipe(
           startWith(''),
           map(value => this._filter(value || '', refrigerators)),
         );
@@ -467,10 +468,12 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
         console.log(form_value.searchBarOvenCicleCountInput);
         console.log(form_value.searchBarWashingMachineEcoProgram40_60CountInput);
 
-        let daily_power_consumption = refrigerator_daily_consumption! + freezer_daily_consumption! + dryer_daily_consumption! +
-          (searchBarHot_plateMinutesInput! * hot_plate_consumption!) + (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
+        let daily_power_consumption = refrigerator_daily_consumption! + freezer_daily_consumption!
+          + dryer_daily_consumption! + (searchBarHot_plateMinutesInput! * hot_plate_consumption!) +
+          (searchBarMicrowaveMinutesInput! * microwave_consumption!) +
           (searchBarDishwasherEcoProgramCountInput! * dishwasher_eco_program_consumption!) +
-          (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) + (searchBarOvenCicleCountInput! * oven_consumption_traditional!) +
+          (searchBarDehumidifierMinutesInput! * dehumidifier_consumption!) +
+          (searchBarOvenCicleCountInput! * oven_consumption_traditional!) +
           (searchBarWashingMachineEcoProgram40_60CountInput! * washing_machine_eco_40_60_program_consumption!);
 
         let monthly_power_consumption = daily_power_consumption * 30;
@@ -488,6 +491,7 @@ export class KalkulatorComponent implements OnInit, OnDestroy {
 
         this.power_consumption_daily_price = +(daily_power_consumption * 35.293).toFixed(2);
         this.power_consumption_monthly_price = +(monthly_power_consumption * 35.293).toFixed(2);
+
         this.power_consumption_yearly_price = yearly_power_consumption;
 
         if (this.power_consumption_yearly_price > 2523) {

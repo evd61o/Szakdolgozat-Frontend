@@ -387,8 +387,10 @@
 
         </div>
         <div class="bttn-container" *ngIf="showBeforeKalkulate">
-          <button mat-raised-button type="submit"  value="szamolas" id="szamolasButton" (click)="setSubmitType('szamolas')">Számolás</button>
-          <button mat-raised-button type="submit"  value="betoltes" id="betoltesButton" (click)="setSubmitType('betoltes')">Profil betöltése</button>
+          <button mat-raised-button type="submit"  value="szamolas"
+                  id="szamolasButton" (click)="setSubmitType('szamolas')">Számolás</button>
+          <button mat-raised-button type="submit"  value="betoltes"
+                  id="betoltesButton" (click)="setSubmitType('betoltes')">Profil betöltése</button>
         </div>
         <div class="bttn-reflesh" *ngIf="showAfterKalkulate">
           <button mat-raised-button type="submit"  value="ujratoltes" id="ujratoltesButton" (click)="setSubmitType('ujratoltes')">Számolás újra</button>
